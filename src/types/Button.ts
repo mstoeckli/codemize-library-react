@@ -43,7 +43,8 @@ export type ButtonConfigTheme = {
     padding: string, // -> 8px
     cursor: string, // -> pointer | default ...
     fontWeight: number, // -> 500 | 600 | 700 ...
-    fontSize: string // -> 0.775rem
+    fontSize: string, // -> 0.775rem
+    transition: string // -> all 0.3s ease
 };
 
 /** @public

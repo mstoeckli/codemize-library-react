@@ -77,7 +77,8 @@ const ThemeLight: DefaultTheme = {
             padding: "8px",
             cursor: "pointer",
             fontWeight: 500,
-            fontSize: "0.775rem"
+            fontSize: "0.775rem",
+            transition: "all 0.3s ease"
         }
     },
     dropdown: {
@@ -96,6 +97,15 @@ const ThemeLight: DefaultTheme = {
             padding: "8px",
             transition: "all 0.2s ease-in-out",
             zIndex: 9
+        }
+    },
+    copyright: {
+        colors: {
+            color: "#767676"
+        },
+        config: {
+            fontSize: "0.65rem",
+            fontWeight: 500
         }
     }
 };

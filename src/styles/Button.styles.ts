@@ -32,7 +32,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   cursor: ${props => props.theme.button.config.cursor};
   background: ${props => props.theme.button.colors.active.background[props.innerType]};
   outline: none;
-  transition: all 0.3s ease;
+  transition: ${props => props.theme.button.config.transition};
 
   & > svg {
     color: ${props => props.theme.button.colors.active.icon[props.innerType]};
