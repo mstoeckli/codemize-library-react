@@ -1,7 +1,6 @@
 import React from 'react';
-import { DefaultTheme } from "styled-components";
 
-import { Theme } from './Global';
+import { DefaultTheme } from "styled-components";
 
 import { DropdownFloat } from "./Dropdown";
 
@@ -14,7 +13,7 @@ export interface IButtonProps {
     disabled?: boolean,
     dropdownContent?: JSX.Element,
     dropdownFloat?: DropdownFloat,
-    theme?: Theme,
+    theme?: DefaultTheme,
     customTheme?: DefaultTheme,
     onClick: (oEvt: React.MouseEvent<HTMLButtonElement>) => void,
 }

@@ -1,3 +1,5 @@
+import { DefaultTheme } from "styled-components";
+
 /** @public
  *  @desc Defines the properties of each button */
 export interface IDropdownProps {
@@ -5,6 +7,7 @@ export interface IDropdownProps {
     float: DropdownFloat,
     clientRectWidth: number,
     isActive: boolean,
+    theme?: DefaultTheme,
     clickedOutside?: (isActive:boolean) => void
 }
 

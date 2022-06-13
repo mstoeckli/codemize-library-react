@@ -44,7 +44,7 @@ const Button = forwardRef((props: IButtonProps, ref: React.ForwardedRef<any>|Rea
     );
 
     return (
-        <ThemeProvider>
+        <ThemeProvider theme={props?.theme}>
             <StyledButton
                 ref={buttonRefObj}
                 clientRectWidth={clientRectWidth}

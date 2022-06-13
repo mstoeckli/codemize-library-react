@@ -8,14 +8,12 @@ import { ThemeLight } from './ThemeLight';
 import { IThemeProviderProps } from '../types';
 
 /** @public */
-const Theme = (props: IThemeProviderProps): JSX.Element => {
-    return (
-        <ThemeProvider
-            theme={props?.theme || ThemeLight}>
-            <GlobalStyle />
-            {props.children}
-        </ThemeProvider>
-    );
-};
+const Theme = (props: IThemeProviderProps): JSX.Element => (
+    <ThemeProvider
+        theme={props?.theme || ThemeLight}>
+        <GlobalStyle />
+        {props.children}
+    </ThemeProvider>
+);
 
 export default Theme;

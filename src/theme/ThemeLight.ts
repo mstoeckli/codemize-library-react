@@ -107,6 +107,112 @@ const ThemeLight: DefaultTheme = {
             fontSize: "0.65rem",
             fontWeight: 500
         }
+    },
+    search: {
+        colors: {
+            active: {
+                text: "#3b4148",
+                border: "#e9e9e9",
+                iconLeft: "#455a64",
+                iconRight: "#a93c3c",
+                background: "#fff",
+                placeholder: "#cbd1dc"
+            },
+            hover: {
+                text: "#3b4148",
+                border: "#3f6ad8",
+                iconLeft: "#3f6ad8",
+                iconRight: "#a93c3c",
+                background: "#fff",
+                placeholder: "#3f6ad8"
+            }
+        },
+        config: {
+            height: "32px",
+            width: "300px",
+            minWidth: "300px",
+            maxWidth: "300px",
+            borderRadius: "6px",
+            fontSizeSVG: "1rem",
+            paddingSVG: "0 0.5rem 0 0.5rem",
+            fontSizeInput: "0.775rem",
+            fontWeightInput: 500,
+            marginInput: "0",
+            marginInputLeftWithoutIcon: "0.75rem",
+            marginInputRightWithoutIcon: "0.75rem",
+            outline: "none",
+            transition: "all 0.3s ease",
+            cursor: "pointer"
+        }
+    },
+    loader: {
+        colors: {
+            backgroundContainer: "rgba(218, 222, 224, 0.3)",
+            backgroundLoaderTile: "rgba(255, 255, 255, 0)",
+            backgroundLoaderTileActive: "rgb(79, 118, 217)",
+            backgroundLoaderTileFolding: "rgb(79, 118, 217, 0.95)"
+        },
+        config: {
+            justifyContent: "center",
+            alignItems: "center",
+            loaderSize: "48px",
+            loaderTileSize: "24px",
+            loaderTileAfterBoxShadow: "0 0 10px rgba(0, 0, 0, 0.15)",
+            zIndex: 99
+        }
+    },
+    madeIn: {
+        colors: {
+            text: "#3b4148",
+            icon: "#455a64"
+        },
+        config: {
+            fontSize: "0.8rem",
+            fontWeight: 600,
+            margin: "16px 0 8px 0",
+            paddingRightSVG: "0.5rem"
+        }
+    },
+    input: {
+        colors: {
+            label: {
+                active: {
+                    color: "#99a3ba",
+                    border: "#cdd9ed",
+                    background: "#eef4ff"
+                },
+                hover: {
+                    color: "#fff",
+                    border: "#3f6ad8",
+                    background: "#678efe"
+                }
+            },
+            input: {
+                active: {
+                    color: "#3b4148",
+                    border: "#cdd9ed",
+                    background: "#fff",
+                    placeholder: "#cbd1dc"
+                },
+                hover: {
+                    border: "#3f6ad8"
+                }
+            }
+        },
+        config: {
+            width: "300px",
+            minWidth: "auto",
+            maxWidth: "auto",
+            lineHeight: "18px",
+            paddingInput: "8px 16px",
+            fontSizeInput: "0.775rem",
+            fontWeightInput: 500,
+            textAlignLabel: "center",
+            paddingLabel: "8px 12px",
+            fontSizeLabel: "0.75rem",
+            fontWeightLabel: 600,
+            borderRadius: "6px"
+        }
     }
 };
 
