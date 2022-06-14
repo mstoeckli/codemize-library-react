@@ -14,7 +14,6 @@ export interface IButtonProps {
     dropdownContent?: JSX.Element,
     dropdownFloat?: DropdownFloat,
     theme?: DefaultTheme,
-    customTheme?: DefaultTheme,
     onClick: (oEvt: React.MouseEvent<HTMLButtonElement>) => void,
 }
 

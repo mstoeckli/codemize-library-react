@@ -71,6 +71,24 @@ declare module 'styled-components' {
                 }
             },
             config: InputConfigTheme
+        },
+        alertDialog: {
+            colors: {
+                title: string,
+                info: string,
+                information: {
+                    color: string
+                },
+                success: {
+                    color: string
+                },
+                warning: {
+                    color: string
+                },
+                error: {
+                    color: string
+                }
+            }
         }
     }
 }

@@ -213,6 +213,24 @@ const ThemeLight: DefaultTheme = {
             fontWeightLabel: 600,
             borderRadius: "6px"
         }
+    },
+    alertDialog: {
+        colors: {
+            title: "#3b4148",
+            info: "#767676",
+            information: {
+                color: "#3f6ad8"
+            },
+            success: {
+                color: "#3ca987"
+            },
+            warning: {
+                color: "#edc32c"
+            },
+            error: {
+                color: "#a93c3c"
+            }
+        }
     }
 };
 
