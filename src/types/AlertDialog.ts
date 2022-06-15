@@ -24,6 +24,52 @@ export interface IAlertDialogProps {
 }
 
 /** @public
+ *  @desc Defines the theme properties for all the alert dialog config */
+export type AlertDialogConfigTheme = {
+    width: string, // -> 300px
+    minWidth: string, // -> 250px
+    maxWidth: string, // -> 350px
+    borderRadius: string, // -> 8px
+    padding: string, // -> 16px
+    boxShadow: string, // -> rgb(0 0 0 / 24%) 0 3px 8px
+    zIndex: number, // -> 99
+    containerIconType: {
+        size: string, // -> 40px
+        iconSize: string, // -> 24px
+        marginBottom: string, // -> 18px
+        borderRadius: string, // -> 50%
+    },
+    containerIconClose: {
+        width: string, // -> 10px
+        fontSize: string, // -> 1rem
+        border: string, // -> none
+        cursor: string, // -> pointer
+        padding: string // -> 4px
+    },
+    containerTitle: {
+        width: string, // -> 100%
+        fontSize: string, // -> 0.85rem,
+        fontWeight: number, // -> 600,
+        textAlign: string, // -> center,
+        marginBottom: string // -> 12px
+    },
+    containerInfo: {
+        width: string, // -> 100%
+        fontSize: string, // -> 0.775rem
+        fontWeight: number, // -> 500
+        textAlign: string, // -> center
+        marginBottom: string // -> 0
+    },
+    containerButtons: {
+        justifyContent: string, // -> center,
+        alignItems: string, // -> center,
+        gap: string, // -> 8px,
+        flexWrap: string, // -> wrap,
+        marginTop: string // -> 18px
+    }
+}
+
+/** @public
  *  @desc Defines the dialog types for different visualization */
 export type AlertDialogType = "information" | "success" | "warning" | "error";
 

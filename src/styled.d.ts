@@ -7,6 +7,7 @@ import {
     LoaderConfigProps,
     MadeInConfigTheme,
     InputColors, InputConfigTheme,
+    AlertDialogConfigTheme
 } from './types';
 
  /** @desc DefaultTheme is being used as an interface of props.theme out of the box.
@@ -76,19 +77,27 @@ declare module 'styled-components' {
             colors: {
                 title: string,
                 info: string,
-                information: {
-                    color: string
+                background: string,
+                containerIconType: {
+                    information: {
+                        color: string
+                    },
+                    success: {
+                        color: string
+                    },
+                    warning: {
+                        color: string
+                    },
+                    error: {
+                        color: string
+                    }
                 },
-                success: {
-                    color: string
-                },
-                warning: {
-                    color: string
-                },
-                error: {
-                    color: string
+                containerIconClose: {
+                    color: string, // -> #a9b2bb
+                    background: string // -> transparent
                 }
-            }
+            },
+            config: AlertDialogConfigTheme
         }
     }
 }

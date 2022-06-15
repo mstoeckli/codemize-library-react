@@ -79,6 +79,20 @@ const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRe
             onClick={props.buttonOK?.onClick ? props.buttonOK.onClick : () => {}} />
     );
 
+    /** @private */
+    const _addButtons = (): JSX.Element => (
+        <div className="alert-dialog-buttons">
+            <div className="alert-dialog-custom-buttons">
+                {_addCustomButtons()}
+                {props.buttonSupport?.visible && _addSupportButton()}
+            </div>
+            <div className="alert-dialog-default-buttons">
+                {props.buttonCancel?.visible && _addCancelButton()}
+                {props.buttonOK?.visible && _addOkButton()}
+            </div>
+        </div>
+    );
+
     return (
         <ThemeProvider theme={props?.theme}>
             <StyledAlertDialog
@@ -89,16 +103,7 @@ const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRe
                 {!props?.hideIconSrc && _addDialogTypeIcon()}
                 {props?.title && <h4>{props.title}</h4>}
                 {props?.info && <span>{props.info}</span>}
-                <div className="alert-dialog-buttons">
-                    <div className="alert-dialog-custom-buttons">
-                        {_addCustomButtons()}
-                        {props.buttonSupport?.visible && _addSupportButton()}
-                    </div>
-                    <div className="alert-dialog-default-buttons">
-                        {props.buttonCancel?.visible && _addCancelButton()}
-                        {props.buttonOK?.visible && _addOkButton()}
-                    </div>
-                </div>
+                {_addButtons()}
             </StyledAlertDialog>
         </ThemeProvider>
     )

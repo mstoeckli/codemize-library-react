@@ -218,17 +218,67 @@ const ThemeLight: DefaultTheme = {
         colors: {
             title: "#3b4148",
             info: "#767676",
-            information: {
-                color: "#3f6ad8"
+            background: "#fff",
+            containerIconType: {
+                information: {
+                    color: "#3f6ad8"
+                },
+                success: {
+                    color: "#3ca987"
+                },
+                warning: {
+                    color: "#edc32c"
+                },
+                error: {
+                    color: "#a93c3c"
+                }
             },
-            success: {
-                color: "#3ca987"
+            containerIconClose: {
+                color: "#a9b2bb",
+                background: "transparent"
+            }
+        },
+        config: {
+            width: "350px",
+            minWidth: "300px",
+            maxWidth: "400px",
+            borderRadius: "8px",
+            padding: "16px",
+            boxShadow: "rgb(0 0 0 / 24%) 0 3px 8px",
+            zIndex: 99,
+            containerIconType: {
+                size: "40px",
+                iconSize: "24px",
+                marginBottom: "18px",
+                borderRadius: "50%"
             },
-            warning: {
-                color: "#edc32c"
+            containerIconClose: {
+                width: "10px",
+                fontSize: "1rem",
+                border: "none",
+                cursor: "pointer",
+                padding: "0"
             },
-            error: {
-                color: "#a93c3c"
+            containerTitle: {
+                width: "100%",
+                fontSize: "0.85rem",
+                fontWeight: 600,
+                textAlign: "center",
+                marginBottom: "12px"
+            },
+            containerInfo: {
+                width: "100%",
+                fontSize: "0.775rem",
+                fontWeight: 500,
+                textAlign: "center",
+                marginBottom: "0"
+            },
+            containerButtons: {
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "8px",
+                flexWrap: "wrap",
+                marginTop: "18px"
             }
         }
     }
