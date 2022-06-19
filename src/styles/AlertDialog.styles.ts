@@ -110,6 +110,10 @@ export const StyledAlertDialog = styled("div")<IStyledAlertDialogProps>`
       gap: ${props => props.theme.alertDialog.config.containerButtons.gap};
       flex-wrap: ${props => props.theme.alertDialog.config.containerButtons.flexWrap};
     }
+
+    //& div.alert-dialog-custom-buttons {
+    //  flex-basis: 100%; 
+    //}
       
     & div.alert-dialog-buttons {
       margin-top: ${props => props.theme.alertDialog.config.containerButtons.marginTop};

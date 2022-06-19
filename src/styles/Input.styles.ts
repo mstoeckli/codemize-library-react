@@ -12,6 +12,8 @@ export const StyledInput = styled("div")<IStyledInputProps>`
   width: ${props => props.theme.input.config.width};
 
   & > span.input-label {
+    display: flex;
+    align-items: ${props => props.theme.input.config.textAlignLabel};;
     text-align: ${props => props.theme.input.config.textAlignLabel};
     padding: ${props => props.theme.input.config.paddingLabel};
     font-size: ${props => props.theme.input.config.fontSizeLabel};
@@ -55,7 +57,6 @@ export const StyledInput = styled("div")<IStyledInputProps>`
   
   & > span.input-label, & input {
     white-space: nowrap;
-    display: block;
     
     &:not(:first-child):not(:last-child) {
       border-radius: 0;

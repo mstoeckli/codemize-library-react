@@ -82,7 +82,7 @@ const ThemeLight: DefaultTheme = {
             padding: "8px",
             cursor: "pointer",
             fontWeight: 500,
-            fontSize: "0.775rem",
+            fontSize: "0.8rem",
             transition: "all 0.3s ease",
             badge: {
                 top: "-0.65rem",
@@ -135,10 +135,10 @@ const ThemeLight: DefaultTheme = {
             hover: {
                 text: "#3b4148",
                 border: "#3f6ad8",
-                iconLeft: "#3f6ad8",
+                iconLeft: "#688ccd",
                 iconRight: "#a93c3c",
                 background: "#fff",
-                placeholder: "#3f6ad8"
+                placeholder: "#688ccd"
             }
         },
         config: {
@@ -198,7 +198,7 @@ const ThemeLight: DefaultTheme = {
                 hover: {
                     color: "#fff",
                     border: "#3f6ad8",
-                    background: "#678efe"
+                    background: "#688ccd"
                 }
             },
             input: {
@@ -209,7 +209,7 @@ const ThemeLight: DefaultTheme = {
                     placeholder: "#cbd1dc"
                 },
                 hover: {
-                    border: "#3f6ad8"
+                    border: "#688ccd"
                 }
             }
         },

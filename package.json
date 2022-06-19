@@ -1,6 +1,6 @@
 {
   "name": "codemize-library-react",
-  "version": "0.1.13",
+  "version": "0.1.16",
   "private": false,
   "author": "Marc Patrick Stöckli - Codemize GmbH",
   "license": "MIT",
@@ -11,10 +11,6 @@
     "dist"
   ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "rollup": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
