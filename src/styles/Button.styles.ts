@@ -51,7 +51,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
 
   ${props => props.showBadge && css`
     &::before {
-      content: attr(data-badgeValue);
+      content: attr(data-badgevalue);
       position: absolute;
       top: ${props => props.theme.button.config.badge.top};
       right: ${props => props.theme.button.config.badge.right};
@@ -66,6 +66,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
       font-size: ${props => props.theme.button.config.badge.fontSize};
       font-weight: ${props => props.theme.button.config.badge.fontWeight};
       border: 1px solid ${props => props.theme.button.colors.badge.border};
+      z-index: 9;
     }
   `}
   

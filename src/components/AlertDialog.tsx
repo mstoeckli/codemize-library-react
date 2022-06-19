@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 
 /** @public */
-const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => {
+const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): JSX.Element => {
     /** @desc Returns a stateful value, and a function to update it. -> Updates visibility of modal dialog by attribute "display"
      *  @type {[state:string, setState:function]} */
     const [ state, setState ] = useState("flex");
@@ -95,11 +95,11 @@ const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRe
         <div className="alert-dialog-buttons">
             <div className="alert-dialog-custom-buttons">
                 {_addCustomButtons()}
-                {props.buttonSupport?.visible && _addSupportButton()}
+                {props?.buttonSupport?.visible && _addSupportButton()}
             </div>
             <div className="alert-dialog-default-buttons">
-                {props.buttonCancel?.visible && _addCancelButton()}
-                {props.buttonOK?.visible && _addOkButton()}
+                {props?.buttonCancel?.visible && _addCancelButton()}
+                {props?.buttonOK?.visible && _addOkButton()}
             </div>
         </div>
     );

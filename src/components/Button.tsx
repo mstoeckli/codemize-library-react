@@ -49,7 +49,7 @@ const Button = forwardRef((props: IButtonProps, ref?: React.ForwardedRef<any>|Re
                 ref={buttonRefObj}
                 clientRectWidth={clientRectWidth}
                 onClick={props?.dropdownContent ? _onClick : props?.onClick}
-                data-badgeValue={props?.badgeValue}
+                data-badgevalue={props?.badgeValue}
                 {...getDefaultValues(props)}>
                 {props?.iconSrc}
                 {props?.text && <span className="button-text">{props.text}</span> }

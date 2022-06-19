@@ -74,7 +74,7 @@ const ThemeLight: DefaultTheme = {
             }
         },
         config: {
-            height: "32px",
+            height: "auto",
             width: "auto",
             borderRadius: "6px",
             justifyContent: "center",
@@ -224,7 +224,7 @@ const ThemeLight: DefaultTheme = {
             textAlignLabel: "center",
             paddingLabel: "8px 12px",
             fontSizeLabel: "0.75rem",
-            fontWeightLabel: 600,
+            fontWeightLabel: 500,
             borderRadius: "6px"
         }
     },

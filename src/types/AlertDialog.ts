@@ -23,9 +23,9 @@ export interface IAlertDialogProps {
         warning?: JSX.Element,
         error?: JSX.Element
     },
-    buttonOK: AlertDialogButtonConfig,
-    buttonCancel: AlertDialogButtonConfig,
-    buttonSupport: AlertDialogButtonConfig,
+    buttonOK?: AlertDialogButtonConfig,
+    buttonCancel?: AlertDialogButtonConfig,
+    buttonSupport?: AlertDialogButtonConfig,
     customButtons?: IButtonProps[]
 }
 

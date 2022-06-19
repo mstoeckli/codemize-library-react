@@ -5,7 +5,7 @@ import { DefaultTheme } from "styled-components";
 /** @public
  *  @desc Defines the properties of each search element */
 export interface ISearchProps {
-    value: string,
+    value?: string,
     placeholder: string,
     iconSrcLeft?: JSX.Element,
     iconSrcRight?: JSX.Element,

@@ -21,15 +21,6 @@ Example1DefaultButtons.args = {
     title: "CM-I001",
     info: "Please connect to private connection to secure your data",
     type: "success",
-    buttonOK: {
-        visible: true,
-    },
-    buttonCancel: {
-        visible: true,
-    },
-    buttonSupport: {
-        visible: true,
-    }
 };
 
 /** @public

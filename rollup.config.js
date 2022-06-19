@@ -1,7 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import babel from '@rollup/plugin-babel';
 import typescript from '@rollup/plugin-typescript';
+import external from 'rollup-plugin-peer-deps-external';
 import dts from 'rollup-plugin-dts';
 import { terser } from 'rollup-plugin-terser';
 
@@ -19,22 +19,16 @@ export default [{
     output: [{
         file: oPackage.main,
         format: "cjs",
-        sourcemap: true
+        sourcemap: true,
+        name: "CodemizeLibraryReact"
     }, {
         file: oPackage.module,
         format: "esm",
         sourcemap: true
     }],
-    external: ["styled-components"],
-    globals: {
-        "styled-components": "styled"
-    },
+    external: ["styled-components", "react", "react-dom"],
     plugins: [
-        // babel({
-        //     babelHelpers: 'bundled',
-        //     exclude: 'node_modules/**',
-        //     presets: ['@babel/preset-env','@babel/preset-react']
-        // }),
+        external(),
         typescript({
             tsconfig: "./tsconfig.json"
         }),
@@ -48,5 +42,5 @@ export default [{
         file: "dist/index.d.ts",
         format: "esm"
     }],
-    plugins: [dts()]
+    plugins: [dts()],
 }];
