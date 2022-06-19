@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ButtonType, IButtonProps } from '../types';
 
 /** @public
@@ -7,7 +7,8 @@ export const getDefaultValues = (props: IButtonProps) => ({
     dropdownFloat: props?.dropdownFloat || "left",
     innerType: props?.type || "default",
     disabled: props?.disabled || false,
-    hasText: !!props.text
+    hasText: !!props.text,
+    showBadge: props?.showBadge || false
 });
 
 /** @private */
@@ -15,6 +16,7 @@ interface IStyledButtonProps {
     innerType: ButtonType,
     disabled: boolean,
     hasText: boolean,
+    showBadge: boolean,
     clientRectWidth: number
 }
 
@@ -47,6 +49,26 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
 
   ${props => props.disabled ? `cursor: initial;` : ""}
 
+  ${props => props.showBadge && css`
+    &::before {
+      content: attr(data-badgeValue);
+      position: absolute;
+      top: ${props => props.theme.button.config.badge.top};
+      right: ${props => props.theme.button.config.badge.right};
+      width: ${props => props.theme.button.config.badge.width};
+      height: ${props => props.theme.button.config.badge.height};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: ${props => props.theme.button.config.badge.borderRadius};
+      background: ${props => props.theme.button.colors.badge.background};
+      color: ${props => props.theme.button.colors.badge.color};
+      font-size: ${props => props.theme.button.config.badge.fontSize};
+      font-weight: ${props => props.theme.button.config.badge.fontWeight};
+      border: 1px solid ${props => props.theme.button.colors.badge.border};
+    }
+  `}
+  
   &:hover {
     border-color: ${props => props.theme.button.colors.hover.border[props.innerType]};
     background: ${props => props.theme.button.colors.hover.background[props.innerType]};

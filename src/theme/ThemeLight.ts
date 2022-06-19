@@ -66,6 +66,11 @@ const ThemeLight: DefaultTheme = {
                     error: "#ffe0e0",
                     create: "#5379cd"
                 }
+            },
+            badge: {
+                background: "#c65454",
+                color: "#fff",
+                border: "#fff"
             }
         },
         config: {
@@ -78,7 +83,16 @@ const ThemeLight: DefaultTheme = {
             cursor: "pointer",
             fontWeight: 500,
             fontSize: "0.775rem",
-            transition: "all 0.3s ease"
+            transition: "all 0.3s ease",
+            badge: {
+                top: "-0.65rem",
+                right: "-0.65rem",
+                width: "1.25rem",
+                height: "1.25rem",
+                borderRadius: "50%",
+                fontSize: "0.55rem",
+                fontWeight: 500
+            }
         }
     },
     dropdown: {
@@ -218,7 +232,8 @@ const ThemeLight: DefaultTheme = {
         colors: {
             title: "#3b4148",
             info: "#767676",
-            background: "#fff",
+            backgroundContainer: "rgba(218, 222, 224, 0.3)",
+            backgroundDialog: "#fff",
             containerIconType: {
                 information: {
                     color: "#3f6ad8"

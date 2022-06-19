@@ -9,7 +9,7 @@ import { IButtonProps } from '../types';
 import { ThemeProvider } from '../theme';
 
 /** @public */
-const Button = forwardRef((props: IButtonProps, ref: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => {
+const Button = forwardRef((props: IButtonProps, ref?: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => {
     /** @desc Create a reference object to determine the width of button element */
     const buttonRefObj = useRef(ref);
 
@@ -49,6 +49,7 @@ const Button = forwardRef((props: IButtonProps, ref: React.ForwardedRef<any>|Rea
                 ref={buttonRefObj}
                 clientRectWidth={clientRectWidth}
                 onClick={props?.dropdownContent ? _onClick : props?.onClick}
+                data-badgeValue={props?.badgeValue}
                 {...getDefaultValues(props)}>
                 {props?.iconSrc}
                 {props?.text && <span className="button-text">{props.text}</span> }

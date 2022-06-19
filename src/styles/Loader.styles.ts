@@ -5,8 +5,8 @@ import { ILoaderProps } from "../types";
 /** @public
  *  @desc Initialize style properties and set their default values */
 export const getDefaultValues = (props: ILoaderProps) => ({
-    height: props?.height || "100%",
-    width: props?.width || "100%",
+    height: props?.height || "auto",
+    width: props?.width || "auto",
     top: props?.top || "0",
     left: props?.left || "0",
     right: props?.right || "0",

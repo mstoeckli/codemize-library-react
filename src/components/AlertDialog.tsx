@@ -18,6 +18,15 @@ const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRe
     const [ state, setState ] = useState("flex");
 
     /** @private */
+    const _onClick = (oEvt: React.MouseEvent<HTMLButtonElement>, fnCallback: (oEvt: React.MouseEvent<HTMLButtonElement>) => void): void => {
+        /** @desc Update state state for closing dialog after clicking a default button -> Used also for custom click event!! */
+        setState("none");
+
+        /** @desc Call callback function for custom handling */
+        fnCallback(oEvt);
+    };
+
+    /** @private */
     const _getIconByAlertType = (): AlertDialogIconType => ({
         information: "faInfo",
         success: "faCheckDouble",
@@ -46,7 +55,9 @@ const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRe
 
         /** @desc Add custom buttons to JSX-Array */
         for (const oCustomButton of props?.customButtons ? props.customButtons : []) {
-            aCustomButtons.push(<Button {...oCustomButton} />)
+            aCustomButtons.push(<Button
+                {...oCustomButton}
+                onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, oCustomButton.onClick)} />)
         } return aCustomButtons;
     };
 
@@ -56,7 +67,7 @@ const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRe
             theme={props?.theme}
             text={props.buttonSupport?.text || "Support"}
             iconSrc={props.buttonSupport?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faHandsHelping"]} />}
-            onClick={props.buttonSupport?.onClick ? props.buttonSupport.onClick : () => {}} />
+            onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props.buttonSupport?.onClick ? props.buttonSupport.onClick : () => {})} />
     );
 
     /** @private */
@@ -66,7 +77,7 @@ const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRe
             type="error"
             text={props.buttonCancel?.text || "Abbrechen"}
             iconSrc={props.buttonCancel?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faXmark"]} />}
-            onClick={props.buttonCancel?.onClick ? props.buttonCancel.onClick : () => {}} />
+            onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props.buttonCancel?.onClick ? props.buttonCancel.onClick : () => {})} />
     );
 
     /** @private */
@@ -76,7 +87,7 @@ const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRe
             type="success"
             text={props.buttonOK?.text || "OK"}
             iconSrc={props.buttonOK?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faCheck"]} />}
-            onClick={props.buttonOK?.onClick ? props.buttonOK.onClick : () => {}} />
+            onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props.buttonOK?.onClick ? props.buttonOK.onClick : () => {})} />
     );
 
     /** @private */
@@ -99,11 +110,13 @@ const AlertDialog = forwardRef((props: IAlertDialogProps, ref: React.ForwardedRe
                 ref={ref}
                 state={state}
                 {...getDefaultValues(props)}>
-                {_addCloseIcon()}
-                {!props?.hideIconSrc && _addDialogTypeIcon()}
-                {props?.title && <h4>{props.title}</h4>}
-                {props?.info && <span>{props.info}</span>}
-                {_addButtons()}
+                <div className="dialog">
+                    {_addCloseIcon()}
+                    {!props?.hideIconSrc && _addDialogTypeIcon()}
+                    {props?.title && <h4>{props.title}</h4>}
+                    {props?.info && <span>{props.info}</span>}
+                    {_addButtons()}
+                </div>
             </StyledAlertDialog>
         </ThemeProvider>
     )

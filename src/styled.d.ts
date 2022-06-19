@@ -20,7 +20,12 @@ declare module 'styled-components' {
         button: {
             colors: {
                 active: ButtonColors,
-                hover: ButtonColors
+                hover: ButtonColors,
+                badge: {
+                    background: string,
+                    color: string,
+                    border: string
+                }
             },
             config: ButtonConfigTheme
         },
@@ -77,7 +82,8 @@ declare module 'styled-components' {
             colors: {
                 title: string,
                 info: string,
-                background: string,
+                backgroundContainer: string,
+                backgroundDialog: string,
                 containerIconType: {
                     information: {
                         color: string

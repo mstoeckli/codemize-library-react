@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import 'typeface-montserrat';
+// import 'typeface-montserrat';
 
 /** @public */
 export const GlobalStyle = createGlobalStyle`

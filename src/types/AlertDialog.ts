@@ -6,6 +6,12 @@ import { IButtonProps } from './Button';
 /** @public
  *  @desc Defines the properties of each dialog */
 export interface IAlertDialogProps {
+    height?: string,
+    width?: string,
+    top?: string,
+    left?: string,
+    right?: string,
+    bottom?: string,
     title: string,
     info: string,
     type?: AlertDialogType,

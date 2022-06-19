@@ -1,7 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import babel from '@rollup/plugin-babel';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
+import { terser } from 'rollup-plugin-terser';
 
 /** @desc Import package file as a JavaScript variable for referring to different properties */
 const oPackage = require('./package.json');
@@ -13,7 +15,7 @@ const oPackage = require('./package.json');
  *       is generated. The second configuration object defines how our libraries types are distributed and uses the
  *       dts plugin to do so. */
 export default [{
-    input: "src/index.d.ts",
+    input: "src/index.ts",
     output: [{
         file: oPackage.main,
         format: "cjs",
@@ -28,11 +30,17 @@ export default [{
         "styled-components": "styled"
     },
     plugins: [
-        resolve(),
-        commonjs(),
+        // babel({
+        //     babelHelpers: 'bundled',
+        //     exclude: 'node_modules/**',
+        //     presets: ['@babel/preset-env','@babel/preset-react']
+        // }),
         typescript({
             tsconfig: "./tsconfig.json"
-        })
+        }),
+        resolve(),
+        commonjs(),
+        terser()
     ],
 }, {
     input: "dist/esm/types/index.d.ts",

@@ -3,8 +3,8 @@ import { DefaultTheme } from "styled-components";
 /** @public
  *  @desc Defines the properties of each loader element */
 export interface ILoaderProps {
-    height: string,
-    width: string,
+    height?: string,
+    width?: string,
     top?: string,
     left?: string,
     right?: string,

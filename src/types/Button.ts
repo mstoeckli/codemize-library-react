@@ -14,6 +14,8 @@ export interface IButtonProps {
     dropdownContent?: JSX.Element,
     dropdownFloat?: DropdownFloat,
     theme?: DefaultTheme,
+    showBadge?: boolean,
+    badgeValue?: number,
     onClick: (oEvt: React.MouseEvent<HTMLButtonElement>) => void,
 }
 
@@ -43,6 +45,15 @@ export type ButtonConfigTheme = {
     fontWeight: number, // -> 500 | 600 | 700 ...
     fontSize: string, // -> 0.775rem
     transition: string // -> all 0.3s ease
+    badge: {
+        top: string, // -> -0.65rem
+        right: string, // -> -0.65rem
+        width: string, // -> 1.25rem
+        height: string, // -> 1.25rem
+        borderRadius: string, // -> 50%
+        fontSize: string, // -> 0.55rem
+        fontWeight: number // -> 500
+    }
 };
 
 /** @public

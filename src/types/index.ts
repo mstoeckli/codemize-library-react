@@ -5,6 +5,8 @@ export * from './MadeIn';
 export * from './Search';
 export * from './Input';
 export * from './AlertDialog';
+export * from './NotFound';
+export * from './Toast';
 export * from './Loader';
 export * from './hooks'
 export * from './theme'

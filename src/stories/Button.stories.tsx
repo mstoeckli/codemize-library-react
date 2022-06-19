@@ -76,3 +76,14 @@ Example7TextAndIconWithDropdown.args = {
     iconSrc: <FontAwesomeIcon icon={FaSolidIcons["faInfo"]} />,
     onClick: () => alert("Example 7 Clicked")
 };
+
+/** @public
+ *  @desc Story example 8 - Text and icon with badge */
+export const Example8TextAndIconWithBadge = Template.bind({});
+Example8TextAndIconWithBadge.args = {
+    text: "Click me",
+    showBadge: true,
+    badgeValue: 89,
+    iconSrc: <FontAwesomeIcon icon={FaSolidIcons["faInfo"]} />,
+    onClick: () => alert("Example 8 Clicked")
+};
