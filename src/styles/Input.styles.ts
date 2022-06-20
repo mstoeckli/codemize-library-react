@@ -9,6 +9,7 @@ interface IStyledInputProps {
 export const StyledInput = styled("div")<IStyledInputProps>`
   position: relative;
   display: flex;
+  height: ${props => props.theme.input.config.height};
   width: ${props => props.theme.input.config.width};
 
   & > span.input-label {
@@ -18,7 +19,6 @@ export const StyledInput = styled("div")<IStyledInputProps>`
     padding: ${props => props.theme.input.config.paddingLabel};
     font-size: ${props => props.theme.input.config.fontSizeLabel};
     font-weight: ${props => props.theme.input.config.fontWeightLabel};
-    line-height: ${props => props.theme.input.config.lineHeight};
     color: ${props => props.theme.input.colors.label.active.color};
     border: 1px solid ${props => props.theme.input.colors.label.active.border};
     background: ${props => props.theme.input.colors.label.active.background};
@@ -32,7 +32,6 @@ export const StyledInput = styled("div")<IStyledInputProps>`
     min-width: ${props => props.theme.input.config.minWidth};
     max-width: ${props => props.theme.input.config.maxWidth};
     padding: ${props => props.theme.input.config.paddingInput};
-    line-height: ${props => props.theme.input.config.lineHeight};
     font-size: ${props => props.theme.input.config.fontSizeInput};
     font-weight: ${props => props.theme.input.config.fontWeightInput};
     border-radius: ${props => props.theme.input.config.borderRadius};

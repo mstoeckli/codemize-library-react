@@ -1,6 +1,6 @@
 {
   "name": "codemize-library-react",
-  "version": "0.1.16",
+  "version": "0.1.18",
   "private": false,
   "author": "Marc Patrick Stöckli - Codemize GmbH",
   "license": "MIT",
@@ -10,11 +10,32 @@
   "files": [
     "dist"
   ],
+  "homepage": "https://github.com/mstoeckli/codemize-library-react",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mstoeckli/codemize-library-react"
+  },
+  "bugs": {
+    "email": "marc.stoeckli@codemize.ch",
+    "url": "https://github.com/mstoeckli/codemize-library-react/issues"
+  },
   "scripts": {
     "rollup": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "keywords": [
+    "react",
+    "component",
+    "library",
+    "button",
+    "alertdialog",
+    "input",
+    "search",
+    "toast",
+    "copyright",
+    "dropdown"
+  ],
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
@@ -36,12 +57,15 @@
     "@types/react-dom": "^18.0.5",
     "@types/styled-components": "^5.1.25",
     "babel-loader": "^8.2.5",
+    "postcss": "^8.4.14",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "rollup": "^2.75.6",
     "rollup-plugin-dts": "^4.2.2",
-    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "typeface-montserrat": "^1.1.13",
     "typescript": "^4.7.2"
   },
   "peerDependencies": {

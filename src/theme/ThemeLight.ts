@@ -1,4 +1,5 @@
 import { DefaultTheme } from 'styled-components';
+import "typeface-montserrat";
 
 /** @public */
 const ThemeLight: DefaultTheme = {
@@ -74,7 +75,7 @@ const ThemeLight: DefaultTheme = {
             }
         },
         config: {
-            height: "auto",
+            height: "32px",
             width: "auto",
             borderRadius: "6px",
             justifyContent: "center",
@@ -214,16 +215,16 @@ const ThemeLight: DefaultTheme = {
             }
         },
         config: {
+            height: "32px",
             width: "300px",
             minWidth: "auto",
             maxWidth: "auto",
-            lineHeight: "18px",
             paddingInput: "8px 16px",
             fontSizeInput: "0.775rem",
             fontWeightInput: 500,
             textAlignLabel: "center",
             paddingLabel: "8px 12px",
-            fontSizeLabel: "0.75rem",
+            fontSizeLabel: "0.7rem",
             fontWeightLabel: 500,
             borderRadius: "6px"
         }

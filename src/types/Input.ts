@@ -23,10 +23,10 @@ export type InputColors = {
 }
 
 export type InputConfigTheme = {
+    height: string, // -> 32px
     width: string, // -> 100% | auto ...
     minWidth: string, // -> 100px | auto ...
     maxWidth: string, // -> 300px | auto ...
-    lineHeight: string, // -> 18px
     paddingInput: string, // -> 8px 16px
     fontSizeInput: string, // -> 0.775rem
     fontWeightInput: number, // -> 500

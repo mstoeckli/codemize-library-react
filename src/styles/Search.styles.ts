@@ -19,6 +19,7 @@ export const StyledSearch = styled("div")<IStyledSearchProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: ${props => props.theme.search.config.height};
   width: ${props => props.theme.search.config.width};
   min-width: ${props => props.theme.search.config.minWidth};
   max-width: ${props => props.theme.search.config.maxWidth};
@@ -51,7 +52,7 @@ export const StyledSearch = styled("div")<IStyledSearchProps>`
 
   & input.search-input {
     width: 100%;
-    height: ${props => props.theme.search.config.height};
+    height: calc(${props => props.theme.search.config.height} - 2px);
     outline: ${props => props.theme.search.config.outline};
     border: none;
     margin: ${props => props.theme.search.config.marginInput};
