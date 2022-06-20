@@ -4,6 +4,7 @@ import { ButtonType, IButtonProps } from '../types';
 /** @public
  *  @desc Initialize style properties and set their default values */
 export const getDefaultValues = (props: IButtonProps) => ({
+    width: props?.width || "auto",
     dropdownFloat: props?.dropdownFloat || "left",
     innerType: props?.type || "default",
     disabled: props?.disabled || false,
@@ -13,6 +14,7 @@ export const getDefaultValues = (props: IButtonProps) => ({
 
 /** @private */
 interface IStyledButtonProps {
+    width: string,
     innerType: ButtonType,
     disabled: boolean,
     hasText: boolean,
@@ -25,7 +27,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   position: relative;
   display: inline-flex;
   height: ${props => props.theme.button.config.height};
-  width: ${props => props.theme.button.config.width};
+  width: ${props => props.width};
   border: 1px solid ${props => props.theme.button.colors.active.border[props.innerType]};
   border-radius: ${props => props.theme.button.config.borderRadius};
   justify-content: ${props => props.theme.button.config.justifyContent};
@@ -40,12 +42,14 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     font-size: ${props => props.theme.button.config.fontSizeSVG};
     color: ${props => props.theme.button.colors.active.icon[props.innerType]};
     padding-right: ${props => props.hasText ? "0.5rem" : "0"};
+    line-height: ${props => props.theme.button.config.height};
   }
 
   & > span.button-text {
     font-size: ${props => props.theme.button.config.fontSize};
     font-weight: ${props => props.theme.button.config.fontWeight};
     color: ${props => props.theme.button.colors.active.text[props.innerType]};
+    line-height: ${props => props.theme.button.config.height};
   }
 
   ${props => props.disabled ? `cursor: initial;` : ""}

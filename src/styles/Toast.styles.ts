@@ -16,7 +16,7 @@ export const StyledToast = styled("div")<IStyledToastProps>`
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   border: 1px solid #4070f4;
   border-left: 6px solid #4070f4;
-  overflow: hidden;
+  overflow: hidden; 
   //transform: translateX(calc(100% + 30px));
   //transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
   

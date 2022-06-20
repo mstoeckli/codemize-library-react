@@ -7,7 +7,7 @@ import { ILoaderProps } from '../types';
 import { ThemeProvider } from '../theme';
 
 /** @public */
-const Loader = forwardRef((props: ILoaderProps, ref: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => (
+const Loader = forwardRef<HTMLDivElement, ILoaderProps>((props, ref): JSX.Element => (
     <ThemeProvider theme={props?.theme}>
         <StyledLoader
             ref={ref}

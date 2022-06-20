@@ -6,35 +6,37 @@ import { IButtonProps } from './Button';
 /** @public
  *  @desc Defines the properties of each dialog */
 export interface IAlertDialogProps {
+    theme?: DefaultTheme,
     height?: string,
     width?: string,
     top?: string,
     left?: string,
     right?: string,
     bottom?: string,
-    title: string,
-    info: string,
-    type?: AlertDialogType,
-    theme?: DefaultTheme,
-    hideIconSrc?: boolean,
-    iconSrcType?: {
-        default?: JSX.Element,
-        success?: JSX.Element,
-        warning?: JSX.Element,
-        error?: JSX.Element
-    },
-    buttonOK?: AlertDialogButtonConfig,
-    buttonCancel?: AlertDialogButtonConfig,
-    buttonSupport?: AlertDialogButtonConfig,
-    customButtons?: IButtonProps[]
+    dialog: {
+        width?: string,
+        minWidth?: string,
+        maxWidth?: string,
+        title: string,
+        info: string,
+        type?: AlertDialogType,
+        hideIconSrc?: boolean,
+        iconSrcType?: {
+            default?: JSX.Element,
+            success?: JSX.Element,
+            warning?: JSX.Element,
+            error?: JSX.Element
+        },
+        buttonOK?: AlertDialogButtonConfig,
+        buttonCancel?: AlertDialogButtonConfig,
+        buttonSupport?: AlertDialogButtonConfig,
+        customButtons?: IButtonProps[]
+    }
 }
 
 /** @public
  *  @desc Defines the theme properties for all the alert dialog config */
 export type AlertDialogConfigTheme = {
-    width: string, // -> 300px
-    minWidth: string, // -> 250px
-    maxWidth: string, // -> 350px
     borderRadius: string, // -> 8px
     padding: string, // -> 16px
     boxShadow: string, // -> rgb(0 0 0 / 24%) 0 3px 8px
@@ -42,7 +44,7 @@ export type AlertDialogConfigTheme = {
     containerIconType: {
         size: string, // -> 40px
         iconSize: string, // -> 24px
-        marginBottom: string, // -> 18px
+        margin: string, // -> 0 0 18px 0
         borderRadius: string, // -> 50%
     },
     containerIconClose: {
@@ -57,21 +59,21 @@ export type AlertDialogConfigTheme = {
         fontSize: string, // -> 0.85rem,
         fontWeight: number, // -> 600,
         textAlign: string, // -> center,
-        marginBottom: string // -> 12px
+        padding: string // -> 12px
     },
     containerInfo: {
         width: string, // -> 100%
         fontSize: string, // -> 0.775rem
         fontWeight: number, // -> 500
         textAlign: string, // -> center
-        marginBottom: string // -> 0
+        padding: string // -> 0
     },
     containerButtons: {
         justifyContent: string, // -> center,
         alignItems: string, // -> center,
         gap: string, // -> 8px,
         flexWrap: string, // -> wrap,
-        marginTop: string // -> 18px
+        padding: string // -> 18px
     }
 }
 

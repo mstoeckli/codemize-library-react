@@ -5,25 +5,35 @@ import { AlertDialogType, IAlertDialogProps } from "../types";
 /** @public
  *  @desc Initialize style properties and set their default values */
 export const getDefaultValues = (props: IAlertDialogProps) => ({
-    type: props?.type || "information",
     height: props?.height || "auto",
     width: props?.width || "auto",
     top: props?.top || "0",
     left: props?.left || "0",
     right: props?.right || "0",
-    bottom: props?.bottom || "0"
+    bottom: props?.bottom || "0",
+    dialog: {
+        width: props?.dialog.width || "350px",
+        minWidth: props?.dialog.minWidth || "300px",
+        maxWidth: props?.dialog.maxWidth || "400px",
+        type: props?.dialog.type || "information",
+    }
 });
 
 /** @private */
 interface IStyledAlertDialogProps {
     state: string,
-    type: AlertDialogType,
     height: string,
     width: string,
     top: string,
     left: string,
     right: string,
-    bottom: string
+    bottom: string,
+    dialog: {
+        width: string,
+        minWidth: string,
+        maxWidth: string,
+        type: AlertDialogType,
+    }
 }
 
 /** @public */
@@ -44,9 +54,9 @@ export const StyledAlertDialog = styled("div")<IStyledAlertDialogProps>`
     flex-direction: column;
     align-items: center;
     position: absolute;
-    width: ${props => props.theme.alertDialog.config.width};
-    min-width: ${props => props.theme.alertDialog.config.minWidth};
-    max-width: ${props => props.theme.alertDialog.config.maxWidth};
+    width: ${props => props.dialog.width};
+    min-width: ${props => props.dialog.minWidth};
+    max-width: ${props => props.dialog.maxWidth};
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -61,14 +71,14 @@ export const StyledAlertDialog = styled("div")<IStyledAlertDialogProps>`
       align-items: center;
       width: ${props => props.theme.alertDialog.config.containerIconType.size};
       height: ${props => props.theme.alertDialog.config.containerIconType.size};
-      margin-bottom: ${props => props.theme.alertDialog.config.containerIconType.marginBottom};
+      margin: ${props => props.theme.alertDialog.config.containerIconType.margin};
       border-radius: ${props => props.theme.alertDialog.config.containerIconType.borderRadius};
-      border: 1px solid ${props => props.theme.alertDialog.colors.containerIconType[props.type].color};
+      border: 1px solid ${props => props.theme.alertDialog.colors.containerIconType[props.dialog.type].color};
         
       & > svg {
         width: ${props => props.theme.alertDialog.config.containerIconType.iconSize};
         height: ${props => props.theme.alertDialog.config.containerIconType.iconSize};
-        color: ${props => props.theme.alertDialog.colors.containerIconType[props.type].color};
+        color: ${props => props.theme.alertDialog.colors.containerIconType[props.dialog.type].color};
       }
     }
     
@@ -89,7 +99,7 @@ export const StyledAlertDialog = styled("div")<IStyledAlertDialogProps>`
       font-weight: ${props => props.theme.alertDialog.config.containerTitle.fontWeight};
       color: ${props => props.theme.alertDialog.colors.title};
       text-align: ${props => props.theme.alertDialog.config.containerTitle.textAlign};
-      margin-bottom: ${props => props.theme.alertDialog.config.containerTitle.marginBottom};
+      padding: ${props => props.theme.alertDialog.config.containerTitle.padding};
     }
     
     & > span {
@@ -98,7 +108,7 @@ export const StyledAlertDialog = styled("div")<IStyledAlertDialogProps>`
       font-weight: ${props => props.theme.alertDialog.config.containerInfo.fontWeight};
       color: ${props => props.theme.alertDialog.colors.info};
       text-align: ${props => props.theme.alertDialog.config.containerInfo.textAlign};
-      margin-bottom: ${props => props.theme.alertDialog.config.containerInfo.marginBottom};
+      padding: ${props => props.theme.alertDialog.config.containerInfo.padding};
     }
       
     & div.alert-dialog-buttons,
@@ -111,12 +121,12 @@ export const StyledAlertDialog = styled("div")<IStyledAlertDialogProps>`
       flex-wrap: ${props => props.theme.alertDialog.config.containerButtons.flexWrap};
     }
 
-    //& div.alert-dialog-custom-buttons {
-    //  flex-basis: 100%; 
-    //}
+    & div.alert-dialog-custom-buttons {
+      flex-basis: 100%;
+    }
       
     & div.alert-dialog-buttons {
-      margin-top: ${props => props.theme.alertDialog.config.containerButtons.marginTop};
+      padding: ${props => props.theme.alertDialog.config.containerButtons.padding};
     }
   }
 `

@@ -7,7 +7,7 @@ import { ICopyrightProps } from '../types';
 import { ThemeProvider } from '../theme';
 
 /** @public */
-const Copyright = forwardRef((props: ICopyrightProps, ref: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => (
+const Copyright = forwardRef<HTMLParagraphElement, ICopyrightProps>((props, ref): JSX.Element => (
     <ThemeProvider theme={props?.theme}>
         <StyledCopyright ref={ref}>
             © {new Date().getFullYear()} {props.text}.

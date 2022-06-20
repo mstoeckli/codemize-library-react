@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useRef, useEffect } from 'react';
+import React, {useState, forwardRef, useEffect, MutableRefObject} from 'react';
 
 import { StyledButton, getDefaultValues } from '../styles/Button.styles';
 
@@ -9,9 +9,10 @@ import { IButtonProps } from '../types';
 import { ThemeProvider } from '../theme';
 
 /** @public */
-const Button = forwardRef((props: IButtonProps, ref?: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => {
-    /** @desc Create a reference object to determine the width of button element */
-    const buttonRefObj = useRef(ref);
+const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref): JSX.Element => {
+    /** @desc Create a reference object to determine the width of button element
+     *  @type {HTMLButtonElement} */
+    const buttonRefObj = ref;
 
     /** @desc Returns a stateful value, and a function to update it. -> Handle dropdown visibility
      *  @type {[isActive:boolean, setIsActive:function]} */

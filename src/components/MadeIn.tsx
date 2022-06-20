@@ -7,7 +7,7 @@ import { IMadeInProps } from '../types';
 import { ThemeProvider } from '../theme';
 
 /** @public */
-const MadeIn = forwardRef((props: IMadeInProps, ref: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => (
+const MadeIn = forwardRef<HTMLDivElement, IMadeInProps>((props, ref): JSX.Element => (
     <ThemeProvider theme={props?.theme}>
         <StyledMadeIn ref={ref}>
             {props?.iconSrc}

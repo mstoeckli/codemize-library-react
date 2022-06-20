@@ -5,6 +5,9 @@ import { DefaultTheme } from "styled-components";
 /** @public
  *  @desc Defines the properties of each search element */
 export interface ISearchProps {
+    width?: string,
+    minWidth?: string,
+    maxWidth?: string,
     value?: string,
     placeholder: string,
     iconSrcLeft?: JSX.Element,
@@ -32,9 +35,6 @@ export type SearchColors = {
  *  @desc Defines the theme properties for all the search config */
 export type SearchConfigTheme = {
     height: string, // -> 32px ...
-    width: string, // -> 300px ...
-    minWidth: string, // -> 200px
-    maxWidth: string, // -> 300px
     borderRadius: string, // -> 6px
     fontSizeSVG: string, // -> 1rem
     paddingSVG: string, // -> 0 0.5rem 0 0.5rem

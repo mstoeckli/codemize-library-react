@@ -4,12 +4,18 @@ import { ISearchProps } from "../types";
 /** @public
  *  @desc Initialize style properties and set their default values */
 export const getDefaultValues = (props: ISearchProps) => ({
+    width: props?.width || "300px",
+    minWidth: props?.minWidth || "auto",
+    maxWidth: props?.maxWidth || "auto",
     hideIconLeft: props?.hideIconLeft || false,
     hideIconRight: props?.hideIconRight || false
 });
 
 /** @private */
 interface IStyledSearchProps {
+    width: string,
+    minWidth: string,
+    maxWidth: string,
     hideIconLeft: boolean,
     hideIconRight: boolean
 }
@@ -20,9 +26,9 @@ export const StyledSearch = styled("div")<IStyledSearchProps>`
   align-items: center;
   justify-content: space-between;
   height: ${props => props.theme.search.config.height};
-  width: ${props => props.theme.search.config.width};
-  min-width: ${props => props.theme.search.config.minWidth};
-  max-width: ${props => props.theme.search.config.maxWidth};
+  width: ${props => props.width};
+  min-width: ${props => props.minWidth};
+  max-width: ${props => props.maxWidth};
   border: 1px solid ${props => props.theme.search.colors.active.border};
   border-radius: ${props => props.theme.search.config.borderRadius};
   background: ${props => props.theme.search.colors.active.background};

@@ -3,6 +3,9 @@ import { DefaultTheme } from "styled-components";
 /** @public
  *  @desc Defines the properties of each loader element */
 export interface IInputProps {
+    width?: string,
+    minWidth?: string,
+    maxWidth?: string,
     label?: string,
     position?: InputLabelPosition,
     theme?: DefaultTheme,
@@ -24,9 +27,6 @@ export type InputColors = {
 
 export type InputConfigTheme = {
     height: string, // -> 32px
-    width: string, // -> 100% | auto ...
-    minWidth: string, // -> 100px | auto ...
-    maxWidth: string, // -> 300px | auto ...
     paddingInput: string, // -> 8px 16px
     fontSizeInput: string, // -> 0.775rem
     fontWeightInput: number, // -> 500

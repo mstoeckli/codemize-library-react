@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 
 /** @public */
-const Search = forwardRef((props: ISearchProps, ref: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => {
+const Search = forwardRef<HTMLDivElement, ISearchProps>((props, ref): JSX.Element => {
     /** @desc Returns a stateful value, and a function to update it. -> Handle search value
      *  @type {[value:string, setValue:function]} */
     const [ value, setValue ] = useState(props?.value);

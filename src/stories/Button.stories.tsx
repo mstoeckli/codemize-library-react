@@ -18,6 +18,7 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
  *  @desc Story example 1 - Icon with text */
 export const Example1IconWithText = Template.bind({});
 Example1IconWithText.args = {
+    width: "400px",
     text: "Click me",
     iconSrc: <FontAwesomeIcon icon={FaSolidIcons["faCubes"]}/>,
     onClick: () => alert("Example 1 Clicked")

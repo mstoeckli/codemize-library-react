@@ -15,6 +15,7 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
  *  @desc Story example 1 */
 export const Example1LabelLeft = Template.bind({});
 Example1LabelLeft.args = {
+    width: "400px",
     label: "https://",
     inputProps: {
         placeholder: "Entry value...",

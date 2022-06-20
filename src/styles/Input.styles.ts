@@ -1,7 +1,20 @@
 import styled, { css } from 'styled-components';
+import { IInputProps } from "../types";
+
+/** @public
+ *  @desc Initialize style properties and set their default values */
+export const getDefaultValues = (props: IInputProps) => ({
+    width: props?.width || "300px",
+    minWidth: props?.minWidth || "auto",
+    maxWidth: props?.maxWidth || "auto",
+    hasLabel: props.hasOwnProperty("label")
+});
 
 /** @private */
 interface IStyledInputProps {
+    width: string,
+    minWidth: string,
+    maxWidth: string,
     hasLabel: boolean
 }
 
@@ -10,7 +23,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
   position: relative;
   display: flex;
   height: ${props => props.theme.input.config.height};
-  width: ${props => props.theme.input.config.width};
+  width: ${props => props.width};
 
   & > span.input-label {
     display: flex;
@@ -28,9 +41,9 @@ export const StyledInput = styled("div")<IStyledInputProps>`
   & > input {
     position: relative;
     display: block;
-    width: ${props => props.theme.input.config.width};
-    min-width: ${props => props.theme.input.config.minWidth};
-    max-width: ${props => props.theme.input.config.maxWidth};
+    width: ${props => props.width};
+    min-width: ${props => props.minWidth};
+    max-width: ${props => props.maxWidth};
     padding: ${props => props.theme.input.config.paddingInput};
     font-size: ${props => props.theme.input.config.fontSizeInput};
     font-weight: ${props => props.theme.input.config.fontWeightInput};

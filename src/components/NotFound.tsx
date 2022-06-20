@@ -7,10 +7,10 @@ import { INotFoundInProps } from '../types';
 import { ThemeProvider } from '../theme';
 
 /** @public */
-const NotFound = forwardRef((props: INotFoundInProps, ref: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => (
+const NotFound = forwardRef<HTMLDivElement, INotFoundInProps>((props, ref): JSX.Element => (
     <ThemeProvider theme={props?.theme}>
         <StyledNotFound ref={ref}>
-
+            In Progress!
         </StyledNotFound>
     </ThemeProvider>
 ));

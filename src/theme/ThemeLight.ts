@@ -76,7 +76,6 @@ const ThemeLight: DefaultTheme = {
         },
         config: {
             height: "32px",
-            width: "auto",
             borderRadius: "6px",
             justifyContent: "center",
             alignItems: "center",
@@ -145,9 +144,6 @@ const ThemeLight: DefaultTheme = {
         },
         config: {
             height: "32px",
-            width: "300px",
-            minWidth: "300px",
-            maxWidth: "300px",
             borderRadius: "6px",
             fontSizeSVG: "1rem",
             paddingSVG: "0 0.5rem 0 0.5rem",
@@ -217,9 +213,6 @@ const ThemeLight: DefaultTheme = {
         },
         config: {
             height: "32px",
-            width: "300px",
-            minWidth: "auto",
-            maxWidth: "auto",
             paddingInput: "8px 16px",
             fontSizeInput: "0.775rem",
             fontWeightInput: 500,
@@ -256,9 +249,6 @@ const ThemeLight: DefaultTheme = {
             }
         },
         config: {
-            width: "350px",
-            minWidth: "300px",
-            maxWidth: "400px",
             borderRadius: "8px",
             padding: "16px",
             boxShadow: "rgb(0 0 0 / 24%) 0 3px 8px",
@@ -266,7 +256,7 @@ const ThemeLight: DefaultTheme = {
             containerIconType: {
                 size: "40px",
                 iconSize: "24px",
-                marginBottom: "18px",
+                margin: "0 0 18px 0",
                 borderRadius: "50%"
             },
             containerIconClose: {
@@ -281,21 +271,21 @@ const ThemeLight: DefaultTheme = {
                 fontSize: "0.85rem",
                 fontWeight: 600,
                 textAlign: "center",
-                marginBottom: "12px"
+                padding: "0 0 12px 0"
             },
             containerInfo: {
                 width: "100%",
                 fontSize: "0.775rem",
                 fontWeight: 500,
                 textAlign: "center",
-                marginBottom: "0"
+                padding: "0"
             },
             containerButtons: {
                 justifyContent: "center",
                 alignItems: "center",
                 gap: "8px",
                 flexWrap: "wrap",
-                marginTop: "18px"
+                padding: "12px 0"
             }
         }
     }

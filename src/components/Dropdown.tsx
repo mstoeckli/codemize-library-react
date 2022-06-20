@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, forwardRef } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import { useClickOutside } from '../hooks';
 
 import { StyledDropdown, getDefaultValues } from "../styles/Dropdown.styles";
@@ -6,10 +6,11 @@ import { StyledDropdown, getDefaultValues } from "../styles/Dropdown.styles";
 import { IDropdownProps } from '../types';
 
 /** @public */
-const Dropdown = forwardRef((props: IDropdownProps, ref: React.ForwardedRef<any>|React.RefObject<any>|any): JSX.Element => {
+const Dropdown = forwardRef<HTMLDivElement, IDropdownProps>((props, ref): JSX.Element => {
     /** @desc Create a reference object to the dropdown element for adding as dependencies to the hook "useEffect" inside
-     *        custom hook "useClickOutside" */
-    const dropdownRefObj = useRef(ref);
+     *        custom hook "useClickOutside"
+     *  @type {HTMLDivElement} */
+    const dropdownRefObj = ref;
 
     /** @desc Returns a stateful value, and a function to update it. -> Handle dropdown activity
      *  @type {[isActive:boolean, setIsActive:function]} */
