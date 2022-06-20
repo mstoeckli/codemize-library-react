@@ -37,6 +37,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   transition: ${props => props.theme.button.config.transition};
 
   & > svg {
+    font-size: ${props => props.theme.button.config.fontSizeSVG};
     color: ${props => props.theme.button.colors.active.icon[props.innerType]};
     padding-right: ${props => props.hasText ? "0.5rem" : "0"};
   }

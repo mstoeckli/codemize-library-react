@@ -44,6 +44,7 @@ export type ButtonConfigTheme = {
     cursor: string, // -> pointer | default ...
     fontWeight: number, // -> 500 | 600 | 700 ...
     fontSize: string, // -> 0.775rem
+    fontSizeSVG: string, // -> 1rem
     transition: string // -> all 0.3s ease
     badge: {
         top: string, // -> -0.65rem

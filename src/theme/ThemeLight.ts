@@ -84,6 +84,7 @@ const ThemeLight: DefaultTheme = {
             cursor: "pointer",
             fontWeight: 500,
             fontSize: "0.8rem",
+            fontSizeSVG: "1rem",
             transition: "all 0.3s ease",
             badge: {
                 top: "-0.65rem",
