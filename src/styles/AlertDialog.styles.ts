@@ -12,10 +12,10 @@ export const getDefaultValues = (props: IAlertDialogProps) => ({
     right: props?.right || "0",
     bottom: props?.bottom || "0",
     dialog: {
-        width: props?.dialog.width || "350px",
-        minWidth: props?.dialog.minWidth || "300px",
-        maxWidth: props?.dialog.maxWidth || "400px",
-        type: props?.dialog.type || "information",
+        width: props?.dialog?.width || "350px",
+        minWidth: props?.dialog?.minWidth || "300px",
+        maxWidth: props?.dialog?.maxWidth || "400px",
+        type: props?.dialog?.type || "information",
     }
 });
 

@@ -45,7 +45,7 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
     const _addDialogTypeIcon = (): JSX.Element => (
         <div className="alert-dialog-type-icon">
             {/*@ts-ignore*/}
-            <FontAwesomeIcon icon={FaSolidIcons[_getIconByAlertType()[props?.type || "information"]]} />
+            <FontAwesomeIcon icon={FaSolidIcons[_getIconByAlertType()[props?.dialog?.type || "information"]]} />
         </div>
     );
 
@@ -54,7 +54,7 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
         const aCustomButtons: JSX.Element[] = [];
 
         /** @desc Add custom buttons to JSX-Array */
-        for (const oCustomButton of props?.dialog.customButtons ? props.dialog.customButtons : []) {
+        for (const oCustomButton of props?.dialog?.customButtons ? props.dialog.customButtons : []) {
             aCustomButtons.push(<Button
                 {...oCustomButton}
                 onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, oCustomButton.onClick)} />)
@@ -65,9 +65,9 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
     const _addSupportButton = (): JSX.Element => (
         <Button
             theme={props?.theme}
-            text={props.dialog.buttonSupport?.text || "Support"}
-            iconSrc={props.dialog.buttonSupport?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faHandsHelping"]} />}
-            onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props.dialog.buttonSupport?.onClick ? props.dialog.buttonSupport.onClick : () => {})} />
+            text={props?.dialog?.buttonSupport?.text || "Support"}
+            iconSrc={props?.dialog?.buttonSupport?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faHandsHelping"]} />}
+            onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props?.dialog?.buttonSupport?.onClick ? props.dialog.buttonSupport.onClick : () => {})} />
     );
 
     /** @private */
@@ -75,9 +75,9 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
         <Button
             theme={props?.theme}
             type="error"
-            text={props.dialog.buttonCancel?.text || "Abbrechen"}
-            iconSrc={props.dialog.buttonCancel?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faXmark"]} />}
-            onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props.dialog.buttonCancel?.onClick ? props.dialog.buttonCancel.onClick : () => {})} />
+            text={props?.dialog?.buttonCancel?.text || "Abbrechen"}
+            iconSrc={props?.dialog?.buttonCancel?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faXmark"]} />}
+            onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props?.dialog?.buttonCancel?.onClick ? props.dialog.buttonCancel.onClick : () => {})} />
     );
 
     /** @private */
@@ -85,9 +85,9 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
         <Button
             theme={props?.theme}
             type="success"
-            text={props.dialog.buttonOK?.text || "OK"}
-            iconSrc={props.dialog.buttonOK?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faCheck"]} />}
-            onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props.dialog.buttonOK?.onClick ? props.dialog.buttonOK.onClick : () => {})} />
+            text={props?.dialog?.buttonOK?.text || "OK"}
+            iconSrc={props?.dialog?.buttonOK?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faCheck"]} />}
+            onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props?.dialog?.buttonOK?.onClick ? props.dialog.buttonOK.onClick : () => {})} />
     );
 
     /** @private */
@@ -95,11 +95,11 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
         <div className="alert-dialog-buttons">
             <div className="alert-dialog-custom-buttons">
                 {_addCustomButtons()}
-                {props?.dialog.buttonSupport?.visible && _addSupportButton()}
+                {props?.dialog?.buttonSupport?.visible && _addSupportButton()}
             </div>
             <div className="alert-dialog-default-buttons">
-                {props?.dialog.buttonCancel?.visible && _addCancelButton()}
-                {props?.dialog.buttonOK?.visible && _addOkButton()}
+                {props?.dialog?.buttonCancel?.visible && _addCancelButton()}
+                {props?.dialog?.buttonOK?.visible && _addOkButton()}
             </div>
         </div>
     );
@@ -112,9 +112,9 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
                 {...getDefaultValues(props)}>
                 <div className="dialog">
                     {_addCloseIcon()}
-                    {!props?.dialog.hideIconSrc && _addDialogTypeIcon()}
-                    {props?.dialog.title && <h4>{props.dialog.title}</h4>}
-                    {props?.dialog.info && <span>{props.dialog.info}</span>}
+                    {!props?.dialog?.hideIconSrc && _addDialogTypeIcon()}
+                    {props?.dialog?.title && <h4>{props.dialog.title}</h4>}
+                    {props?.dialog?.info && <span>{props.dialog.info}</span>}
                     {((props?.dialog?.buttonOK?.visible === true || props?.dialog?.buttonCancel?.visible === true || props?.dialog?.buttonSupport?.visible === true) || (props?.dialog?.customButtons && props?.dialog.customButtons.length > 0)) && _addButtons()}
                 </div>
             </StyledAlertDialog>
