@@ -40,6 +40,7 @@ export type SearchConfigTheme = {
     paddingSVG: string, // -> 0 0.5rem 0 0.5rem
     fontSizeInput: string, // -> 0.775rem
     fontWeightInput: number, // -> 500
+    fontWeightPlaceholder: number, // -> 400
     marginInput: string, // -> 0
     marginInputLeftWithoutIcon: string // -> 0.5rem
     marginInputRightWithoutIcon: string // -> 0.5rem

@@ -38,10 +38,12 @@ export const StyledSearch = styled("div")<IStyledSearchProps>`
     font-size: ${props => props.theme.search.config.fontSizeSVG};
     padding: ${props => props.theme.search.config.paddingSVG};
     cursor: ${props => props.theme.search.config.cursor};
+    transition: ${props => props.theme.search.config.transition};
   }
   
   & > svg.search-svg-left {
     color: ${props => props.theme.search.colors.active.iconLeft};
+    border-right: 1px solid ${props => props.theme.search.colors.active.border};
 
     ${props => props.hideIconLeft && css`
       display: none;
@@ -50,6 +52,7 @@ export const StyledSearch = styled("div")<IStyledSearchProps>`
   
   & > svg.search-svg-right {
     color: ${props => props.theme.search.colors.active.iconRight};
+    border-left: 1px solid ${props => props.theme.search.colors.active.border};
 
     ${props => props.hideIconRight && css`
       display: none;
@@ -77,15 +80,18 @@ export const StyledSearch = styled("div")<IStyledSearchProps>`
     
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: ${props => props.theme.search.colors.active.placeholder};
+      font-weight: ${props => props.theme.search.config.fontWeightPlaceholder};
       opacity: 1; /* Firefox */
     }
 
     :-ms-input-placeholder { /* Internet Explorer 10-11 */
       color: ${props => props.theme.search.colors.active.placeholder};
+      font-weight: ${props => props.theme.search.config.fontWeightPlaceholder};
     }
 
     ::-ms-input-placeholder { /* Microsoft Edge */
       color: ${props => props.theme.search.colors.active.placeholder};
+      font-weight: ${props => props.theme.search.config.fontWeightPlaceholder};
     }
   }
 
@@ -114,10 +120,12 @@ export const StyledSearch = styled("div")<IStyledSearchProps>`
     
     & > svg.search-svg-left {
       color: ${props => props.theme.search.colors.hover.iconLeft};
+      border-right: 1px solid ${props => props.theme.search.colors.hover.border};
     }
 
     & > svg.search-svg-right {
       color: ${props => props.theme.search.colors.hover.iconRight};
+      border-left: 1px solid ${props => props.theme.search.colors.hover.border};
     }
   }
 `

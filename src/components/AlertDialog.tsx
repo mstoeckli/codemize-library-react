@@ -2,11 +2,13 @@ import React, { useState, forwardRef } from 'react';
 
 import { StyledAlertDialog, getDefaultValues } from '../styles/AlertDialog.styles';
 
-import { IAlertDialogProps, AlertDialogIconType } from '../types';
+import { IAlertDialogProps } from '../types';
 
 import { Button } from './';
 
 import { ThemeProvider } from '../theme';
+
+import { getIconByType } from '../helpers/Icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
@@ -27,14 +29,6 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
     };
 
     /** @private */
-    const _getIconByAlertType = (): AlertDialogIconType => ({
-        information: "faInfo",
-        success: "faCheckDouble",
-        warning: "faExclamation",
-        error: "faXmark"
-    });
-
-    /** @private */
     const _addCloseIcon = (): JSX.Element => ( <FontAwesomeIcon
         className="alert-dialog-close-icon"
         icon={FaSolidIcons["faClose"]}
@@ -45,7 +39,7 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
     const _addDialogTypeIcon = (): JSX.Element => (
         <div className="alert-dialog-type-icon">
             {/*@ts-ignore*/}
-            <FontAwesomeIcon icon={FaSolidIcons[_getIconByAlertType()[props?.dialog?.type || "information"]]} />
+            <FontAwesomeIcon icon={FaSolidIcons[getIconByType()[props?.dialog?.type || "information"]]} />
         </div>
     );
 

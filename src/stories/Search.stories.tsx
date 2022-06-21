@@ -43,10 +43,18 @@ Example4HideRightIcon.args = {
 };
 
 /** @public
- *  @desc Story example 4 */
+ *  @desc Story example 5 */
 export const Example5HideAllIcons = Template.bind({});
 Example5HideAllIcons.args = {
     hideIconLeft: true,
     hideIconRight: true,
+    onChange: (oEvt, value) => console.log(value)
+};
+
+/** @public
+ *  @desc Story example 6 */
+export const Example6SpecificWidth = Template.bind({});
+Example6SpecificWidth.args = {
+    width: "150px",
     onChange: (oEvt, value) => console.log(value)
 };

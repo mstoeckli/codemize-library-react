@@ -149,7 +149,8 @@ const ThemeLight: DefaultTheme = {
             paddingSVG: "0 0.5rem 0 0.5rem",
             fontSizeInput: "0.775rem",
             fontWeightInput: 500,
-            marginInput: "0",
+            fontWeightPlaceholder: 400,
+            marginInput: "0 0.5rem",
             marginInputLeftWithoutIcon: "0.75rem",
             marginInputRightWithoutIcon: "0.75rem",
             outline: "none",
@@ -231,7 +232,7 @@ const ThemeLight: DefaultTheme = {
             backgroundDialog: "#fff",
             containerIconType: {
                 information: {
-                    color: "#3f6ad8"
+                    color: "#688ccd"
                 },
                 success: {
                     color: "#3ca987"
@@ -286,6 +287,22 @@ const ThemeLight: DefaultTheme = {
                 gap: "8px",
                 flexWrap: "wrap",
                 padding: "12px 0"
+            }
+        }
+    },
+    toast: {
+        colors: {
+            information: {
+                color: "#688ccd"
+            },
+            success: {
+                color: "#3ca987"
+            },
+            warning: {
+                color: "#edc32c"
+            },
+            error: {
+                color: "#a93c3c"
             }
         }
     }

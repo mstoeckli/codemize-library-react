@@ -40,11 +40,11 @@ const Search = forwardRef<HTMLDivElement, ISearchProps>((props, ref): JSX.Elemen
 
     /** @private */
     const _onClear = (oEvt:React.MouseEvent<SVGSVGElement>) => {
-        if (props?.onClear) {
-            /** @desc Clear value
-             *  @ts-ignore */
-            oEvt.currentTarget.previousSibling.value = String();
+        /** @desc Clear value
+         *  @ts-ignore */
+        oEvt.currentTarget.previousSibling.value = String();
 
+        if (props?.onClear) {
             /** @desc Call callback function for handling search term
              *  @ts-ignore */
             props?.onClear(oEvt);
