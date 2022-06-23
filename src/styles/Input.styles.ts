@@ -55,10 +55,23 @@ export const StyledInput = styled("div")<IStyledInputProps>`
     margin-top: 0;
     margin-bottom: 0;
     transition: border .3s ease;
-
-    &::placeholder {
+    
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: ${props => props.theme.input.colors.input.active.placeholder};
+      font-weight: ${props => props.theme.input.config.fontWeightInputPlaceholder};
+      opacity: 1; /* Firefox */
     }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: ${props => props.theme.input.colors.input.active.placeholder};
+      font-weight: ${props => props.theme.input.config.fontWeightInputPlaceholder};
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: ${props => props.theme.input.colors.input.active.placeholder};
+      font-weight: ${props => props.theme.input.config.fontWeightInputPlaceholder};
+    }
+    
 
     &:hover,
     &:focus {

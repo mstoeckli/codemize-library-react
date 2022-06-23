@@ -5,6 +5,7 @@ import { Button } from '../components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
+import {ThemeLight} from "../theme";
 
 export default {
     title: 'ReactLibrary/Button',
@@ -28,6 +29,7 @@ Example1IconWithText.args = {
  *  @desc Story example 2 - Icon without text */
 export const Example2IconWithoutText = Template.bind({});
 Example2IconWithoutText.args = {
+    theme: ThemeLight,
     iconSrc: <FontAwesomeIcon icon={FaSolidIcons["faCubes"]} />,
     onClick: () => alert("Example 2 Clicked")
 };

@@ -6,21 +6,20 @@ import { IDropdownProps, DropdownFloat } from '../types';
  *  @desc Initialize style properties and set their default values */
 export const getDefaultValues = (props: IDropdownProps) => ({
     float: props?.float || "left",
-    clientRectWidth: props.clientRectWidth,
-    isActive: props?.isActive || false
+    clientRect: props?.clientRect.right + props?.clientRect.left + props?.clientRect.width
 });
 
 /** @private */
 interface IStyledDropdownProps {
     float: DropdownFloat,
-    clientRectWidth: number,
+    clientRect: number,
     isActive: boolean
 }
 
 /** @public */
 export const StyledDropdown = styled("div")<IStyledDropdownProps>`
   display: none;
-  position: absolute;
+  position: relative;
   top: ${props => props.theme.dropdown.config.top};
   width: ${props => props.theme.dropdown.config.width};
   min-width: ${props => props.theme.dropdown.config.minWidth};
@@ -36,7 +35,7 @@ export const StyledDropdown = styled("div")<IStyledDropdownProps>`
   z-index: ${props => props.theme.dropdown.config.zIndex};
   background: ${props => props.theme.dropdown.colors.background};
   
-  ${props => props.float === "left" ? css`left: 0;` : css`right: calc(100% - ${props.clientRectWidth}px);`}
+  ${props => props.float === "left" ? css`left: 0;` : css`right: calc(${props.clientRect}px);`}
 
   ${props => props.isActive && css`
       display: block !important;

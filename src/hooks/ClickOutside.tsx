@@ -4,6 +4,7 @@ import { IClickOutsideProps } from '../types';
 
 /** @public */
 const useClickOutside = (props: IClickOutsideProps): void => {
+    /** @desc Perform side effects in function components -> Similar to componentDidMount and componentDidUpdate */
     useEffect(() => {
         /** @private */
         const _listener = (oEvt:{ target: any }) => {

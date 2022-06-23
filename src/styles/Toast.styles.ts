@@ -4,12 +4,16 @@ import { IToastProps, ToastType } from "../types";
 /** @public
  *  @desc Initialize style properties and set their default values */
 export const getDefaultValues = (props: IToastProps) => ({
+    top: props?.top || "25px",
+    right: props?.right || "25px",
     timeMS: props?.timeMS || 5000,
     type: props?.type || "information"
 });
 
 /** @private */
 interface IStyledToastProps {
+    top: string,
+    right: string,
     timeMS: number,
     type: ToastType
 }
@@ -18,16 +22,16 @@ interface IStyledToastProps {
 export const StyledToast = styled("div")<IStyledToastProps>`
   & .toast-container {
     position: absolute;
-    top: 25px;
-    right: 30px;
-    border-radius: 12px;
-    background: #fff;
-    padding: 8px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
-    border-left: 6px solid ${props => props.theme.toast.colors[props.type].color};
+    top: ${props => props.top};
+    right: ${props => props.right};
+    border-radius: ${props => props.theme.toast.config.container.borderRadius};
+    background: ${props => props.theme.toast.colors.backgroundContainer};
+    padding: ${props => props.theme.toast.config.container.padding};
+    box-shadow: ${props => props.theme.toast.config.container.boxShadow};
+    border-left: ${props => props.theme.toast.config.container.borderLeftSize} solid ${props => props.theme.toast.colors[props.type].color};
     overflow: hidden;
-    transform: translateX(calc(100% + 30px));
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    transform: translateX(calc(100% + ${props => props.right}));
+    transition: ${props => props.theme.toast.config.container.transition};
   }
   
   & .toast-active {
@@ -37,40 +41,43 @@ export const StyledToast = styled("div")<IStyledToastProps>`
   & .toast-content{
     display: flex;
     align-items: center;
+    overflow: hidden;
         
     & .toast-content-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 28px;
-      width: 28px;
-      min-width: 28px;
-      min-height: 28px;
+      height: ${props => props.theme.toast.config.contentIcon.size};
+      width: ${props => props.theme.toast.config.contentIcon.size};
+      min-width: ${props => props.theme.toast.config.contentIcon.size};
+      min-height: ${props => props.theme.toast.config.contentIcon.size};
       background-color: ${props => props.theme.toast.colors[props.type].color};
-      border-radius: 50%;
+      border-radius: ${props => props.theme.toast.config.contentIcon.borderRadius};
             
       & > svg {
-        color: #fff;
-        font-size: 1rem;
+        color: ${props => props.theme.toast.colors.colorContentIcon};
+        font-size: ${props => props.theme.toast.config.contentIcon.fontSize};
       }
     }
     
     & .toast-content-message{
       display: flex;
       flex-direction: column;
-      min-width: 275px;
-      max-width: 300px;
-      margin: 0 8px;
+      align-items: ${props => props.theme.toast.config.contentMessage.alignItems};
+      min-width: ${props => props.theme.toast.config.contentMessage.minWidth};
+      max-width: ${props => props.theme.toast.config.contentMessage.maxWidth};
+      margin: ${props => props.theme.toast.config.contentMessage.margin};
 
       & > h4 {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: #3b4148;
+        font-size: ${props => props.theme.toast.config.contentMessage.fontSizeTitle};
+        font-weight: ${props => props.theme.toast.config.contentMessage.fontWeightTitle};
+        color: ${props => props.theme.toast.colors.colorContentMessageTitle};
       }
 
       & > span {
-        font-size: 0.75rem;
-        color: #767676;
+        font-size: ${props => props.theme.toast.config.contentMessage.fontSizeMessage};
+        font-weight: ${props => props.theme.toast.config.contentMessage.fontWeightMessage};
+        color: ${props => props.theme.toast.colors.colorContentMessageMessage};
       }
     }
   }
@@ -78,19 +85,19 @@ export const StyledToast = styled("div")<IStyledToastProps>`
   & .toast-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    padding-top: 8px;
-    padding-left: calc(28px + 8px);
+    gap: ${props => props.theme.toast.config.contentActions.gap};
+    padding-top: ${props => props.theme.toast.config.contentActions.paddingTop};
+    padding-left: calc(${props => props.theme.toast.config.contentIcon.size} + ${props => props.theme.toast.config.contentActions.paddingLeft});
   }
 
   & .toast-close {
     position: absolute;
-    top: 4px;
-    right: 12px;
-    padding: 4px;
-    cursor: pointer;
-    opacity: 0.7;
-    color: #a9b2bb;
+    top: ${props => props.theme.toast.config.contentClose.top};
+    right: ${props => props.theme.toast.config.contentClose.right};
+    padding: ${props => props.theme.toast.config.contentClose.padding};
+    cursor: ${props => props.theme.toast.config.contentClose.cursor};
+    opacity: ${props => props.theme.toast.config.contentClose.opacity};
+    color: ${props => props.theme.toast.colors.colorContentClose};
   }
   
   & .toast-progress {

@@ -23,12 +23,12 @@ export interface ISearchProps {
 /** @public
  *  @desc Defines the theme properties for all the button colors */
 export type SearchColors = {
-    text: string,
-    iconLeft: string,
-    iconRight: string,
-    border: string,
-    background: string,
-    placeholder: string
+    text?: string,
+    iconLeft?: string,
+    iconRight?: string,
+    border?: string,
+    background?: string,
+    placeholder?: string
 };
 
 /** @public

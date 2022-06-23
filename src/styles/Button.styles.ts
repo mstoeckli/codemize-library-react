@@ -18,8 +18,7 @@ interface IStyledButtonProps {
     innerType: ButtonType,
     disabled: boolean,
     hasText: boolean,
-    showBadge: boolean,
-    clientRectWidth: number
+    showBadge: boolean
 }
 
 /** @public */

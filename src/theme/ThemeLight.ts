@@ -102,7 +102,7 @@ const ThemeLight: DefaultTheme = {
             background: "#fff"
         },
         config: {
-            top: "calc(100% + 10px)",
+            top: "10px",
             width: "100%",
             minWidth: "200px",
             maxWidth: "300px",
@@ -217,6 +217,7 @@ const ThemeLight: DefaultTheme = {
             paddingInput: "8px 16px",
             fontSizeInput: "0.775rem",
             fontWeightInput: 500,
+            fontWeightInputPlaceholder: 400,
             textAlignLabel: "center",
             paddingLabel: "8px 12px",
             fontSizeLabel: "0.7rem",
@@ -292,6 +293,11 @@ const ThemeLight: DefaultTheme = {
     },
     toast: {
         colors: {
+            backgroundContainer: "#fff",
+            colorContentIcon: "#fff",
+            colorContentMessageTitle: "#3b4148",
+            colorContentMessageMessage: "#767676",
+            colorContentClose: "#a9b2bb",
             information: {
                 color: "#688ccd"
             },
@@ -303,6 +309,42 @@ const ThemeLight: DefaultTheme = {
             },
             error: {
                 color: "#a93c3c"
+            }
+        },
+        config: {
+            container: {
+                borderRadius: "12px",
+                padding: "8px",
+                boxShadow: "rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px",
+                borderLeftSize: "6px",
+                transition: "all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35)"
+            },
+            contentIcon: {
+                size: "28px",
+                borderRadius: "50%",
+                fontSize: "1rem"
+            },
+            contentMessage: {
+                minWidth: "275px",
+                maxWidth: "300px",
+                margin: "0 8px",
+                alignItems: "flex-start",
+                fontSizeTitle: "0.75rem",
+                fontWeightTitle: 600,
+                fontSizeMessage: "0.75rem",
+                fontWeightMessage: 500
+            },
+            contentActions: {
+                gap: "8px",
+                paddingTop: "8px",
+                paddingLeft: "8px"
+            },
+            contentClose: {
+                top: "4px",
+                right: "12px",
+                padding: "4px",
+                cursor: "pointer",
+                opacity: 0.7
             }
         }
     }

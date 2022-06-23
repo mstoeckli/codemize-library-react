@@ -1,4 +1,4 @@
-import React, {useState, forwardRef, useEffect, MutableRefObject} from 'react';
+import React, { useState, forwardRef, useEffect, useRef } from 'react';
 
 import { StyledButton, getDefaultValues } from '../styles/Button.styles';
 
@@ -12,22 +12,25 @@ import { ThemeProvider } from '../theme';
 const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref): JSX.Element => {
     /** @desc Create a reference object to determine the width of button element
      *  @type {HTMLButtonElement} */
-    const buttonRefObj = ref;
+    const buttonRefObj = ref ? ref : useRef(null);
 
     /** @desc Returns a stateful value, and a function to update it. -> Handle dropdown visibility
      *  @type {[isActive:boolean, setIsActive:function]} */
     const [ isActive, setIsActive ] = useState(false);
 
     /** @desc Returns a stateful value, and a function to update it. -> Handle float of dropdown container -> LTR/RTL
-     *  @type {[clientRectWidth:number, setClientRectWidth:function]} */
-    const [ clientRectWidth, setClientRectWidth ] = useState(0);
+     *  @type {[clientRect:DOMRect, setClientRect:function]} */
+    const [ clientRect, setClientRect ] = useState<DOMRect>({
+        bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0, x: 0, y: 0,
+        toJSON(): any {}
+    });
 
     /** @desc Perform side effects in function components -> Similar to componentDidMount and componentDidUpdate */
     useEffect((): void => {
         if (buttonRefObj) {
             /** @desc Update client rect width for handling float RTL of dropdown
              *  @ts-ignore */
-            setClientRectWidth(buttonRefObj?.current.getBoundingClientRect().width);
+            setClientRect(buttonRefObj.current.getBoundingClientRect());
         }
     }, [buttonRefObj]);
 
@@ -39,23 +42,24 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref): JSX.Ele
         <Dropdown
             float={getDefaultValues(props).dropdownFloat}
             content={props.dropdownContent || <></>}
-            clientRectWidth={clientRectWidth}
+            clientRect={clientRect}
             isActive={isActive}
             clickedOutside={(isActive) => setIsActive(isActive)}/>
     );
 
     return (
         <ThemeProvider theme={props?.theme}>
-            <StyledButton
-                ref={buttonRefObj}
-                clientRectWidth={clientRectWidth}
-                onClick={props?.dropdownContent ? _onClick : props?.onClick}
-                data-badgevalue={props?.badgeValue}
-                {...getDefaultValues(props)}>
-                {props?.iconSrc}
-                {props?.text && <span className="button-text">{props.text}</span> }
+            <>
+                <StyledButton
+                    ref={buttonRefObj}
+                    onClick={props.hasOwnProperty("dropdownContent") && props.dropdownContent ? _onClick : props?.onClick}
+                    data-badgevalue={props?.badgeValue}
+                    {...getDefaultValues(props)}>
+                    {props?.iconSrc}
+                    {props?.text && <span className="button-text">{props.text}</span> }
+                </StyledButton>
                 {props?.dropdownContent && _addDropdown()}
-            </StyledButton>
+            </>
         </ThemeProvider>
     );
 });

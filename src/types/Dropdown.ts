@@ -5,8 +5,8 @@ import { DefaultTheme } from "styled-components";
 export interface IDropdownProps {
     content: JSX.Element,
     float: DropdownFloat,
-    clientRectWidth: number,
     isActive: boolean,
+    clientRect: DOMRect,
     theme?: DefaultTheme,
     clickedOutside?: (isActive:boolean) => void
 }
@@ -23,7 +23,7 @@ export type DropdownConfigTheme = {
     maxWidth: string, // -> 100% | 10px ...
     borderRadius: string, // -> 6px
     padding: string, // -> 8px
-    top: string, // -> 100% | calc(100% + 10px) ...
+    top: string, // -> 10px
     boxShadow: string, // -> rgba(0, 0, 0, 0.24) 0 3px 8px
     overflow: string, // -> hidden
     transition: string, // -> all 0.2s ease-in-out

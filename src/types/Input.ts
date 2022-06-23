@@ -20,16 +20,20 @@ export type InputLabelPosition = "right" | "left";
  *  @desc Defines the theme properties for all the input colors */
 export type InputColors = {
     color?: string,
-    border: string,
+    border?: string,
     background?: string,
     placeholder?: string
 }
 
+
+/** @public
+ *  @desc Defines the theme properties for all the input config */
 export type InputConfigTheme = {
     height: string, // -> 32px
     paddingInput: string, // -> 8px 16px
     fontSizeInput: string, // -> 0.775rem
     fontWeightInput: number, // -> 500
+    fontWeightInputPlaceholder: number, // -> 400
     textAlignLabel: string, // -> center
     paddingLabel: string, // -> 8px 12px
     fontSizeLabel: string, // -> 0.75rem

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useClickOutside } from '../hooks';
 
 import { StyledDropdown, getDefaultValues } from "../styles/Dropdown.styles";
@@ -6,18 +6,18 @@ import { StyledDropdown, getDefaultValues } from "../styles/Dropdown.styles";
 import { IDropdownProps } from '../types';
 
 /** @public */
-const Dropdown = forwardRef<HTMLDivElement, IDropdownProps>((props, ref): JSX.Element => {
+const Dropdown = (props: IDropdownProps): JSX.Element => {
     /** @desc Create a reference object to the dropdown element for adding as dependencies to the hook "useEffect" inside
      *        custom hook "useClickOutside"
      *  @type {HTMLDivElement} */
-    const dropdownRefObj = ref;
+    const dropdownRefObj = useRef(null);
 
     /** @desc Returns a stateful value, and a function to update it. -> Handle dropdown activity
      *  @type {[isActive:boolean, setIsActive:function]} */
     const [ isActive, setIsActive ] = useState(false);
 
     /** @desc Perform side effects in function components -> Similar to componentDidMount and componentDidUpdate */
-    useEffect(() => setIsActive(props.isActive), [props.isActive]);
+    useEffect((): void => setIsActive(props.isActive), [props.isActive]);
 
     /** @desc Initialize custom hook for handling the outside click of a dropdown element */
     useClickOutside({
@@ -37,10 +37,11 @@ const Dropdown = forwardRef<HTMLDivElement, IDropdownProps>((props, ref): JSX.El
     return (
         <StyledDropdown
             ref={dropdownRefObj}
+            isActive={isActive}
             {...getDefaultValues(props)}>
             {props.content}
         </StyledDropdown>
     )
-});
+};
 
 export default Dropdown;

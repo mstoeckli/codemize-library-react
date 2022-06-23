@@ -7,7 +7,8 @@ import {
     LoaderConfigProps,
     MadeInConfigTheme,
     InputColors, InputConfigTheme,
-    AlertDialogConfigTheme
+    AlertDialogConfigTheme,
+    ToastConfigTheme
 } from './types';
 
  /** @desc DefaultTheme is being used as an interface of props.theme out of the box.
@@ -99,14 +100,19 @@ declare module 'styled-components' {
                     }
                 },
                 containerIconClose: {
-                    color: string, // -> #a9b2bb
-                    background: string // -> transparent
+                    color: string,
+                    background: string
                 }
             },
             config: AlertDialogConfigTheme
         },
         toast: {
             colors: {
+                backgroundContainer: string,
+                colorContentIcon: string,
+                colorContentMessageTitle: string,
+                colorContentMessageMessage: string,
+                colorContentClose: string,
                 information: {
                     color: string
                 },
@@ -119,7 +125,8 @@ declare module 'styled-components' {
                 error: {
                     color: string
                 }
-            }
+            },
+            config: ToastConfigTheme
         }
     }
 }

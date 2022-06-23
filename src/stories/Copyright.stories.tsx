@@ -15,5 +15,5 @@ const Template: ComponentStory<typeof Copyright> = (args) => <Copyright {...args
  *  @desc Story example 1 */
 export const Example1 = Template.bind({});
 Example1.args = {
-    text: "Codemize, All rights reserved",
-};
+    text: "Copyright by Codemize"
+}
