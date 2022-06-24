@@ -15,15 +15,17 @@ interface IStyledInputProps {
     width: string,
     minWidth: string,
     maxWidth: string,
-    hasLabel: boolean
+    hasLabel: boolean,
+    clientRect: DOMRect
 }
 
 /** @public */
 export const StyledInput = styled("div")<IStyledInputProps>`
-  position: relative;
   display: flex;
   height: ${props => props.theme.input.config.height};
   width: ${props => props.width};
+  min-width: ${props => props.minWidth};
+  max-width: ${props => props.maxWidth};
 
   & > span.input-label {
     display: flex;
@@ -41,9 +43,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
   & > input {
     position: relative;
     display: block;
-    width: ${props => props.width};
-    min-width: ${props => props.minWidth};
-    max-width: ${props => props.maxWidth};
+    width: calc(100% - ${props => props.clientRect.width}px);
     padding: ${props => props.theme.input.config.paddingInput};
     font-size: ${props => props.theme.input.config.fontSizeInput};
     font-weight: ${props => props.theme.input.config.fontWeightInput};
