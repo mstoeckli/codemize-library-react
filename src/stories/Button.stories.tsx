@@ -75,6 +75,7 @@ Example6TypeError.args = {
 export const Example7TextAndIconWithDropdown = Template.bind({});
 Example7TextAndIconWithDropdown.args = {
     text: "Click me",
+    dropdownFloat: "right",
     dropdownContent: <div>Any JSX-Element as content</div>,
     iconSrc: <FontAwesomeIcon icon={FaSolidIcons["faInfo"]} />,
     onClick: () => alert("Example 7 Clicked")

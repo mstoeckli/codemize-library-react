@@ -1,26 +1,27 @@
 import styled, { css } from 'styled-components';
 
 import { IDropdownProps, DropdownFloat } from '../types';
+import {DOM} from "@fortawesome/fontawesome-svg-core";
 
 /** @public
  *  @desc Initialize style properties and set their default values */
 export const getDefaultValues = (props: IDropdownProps) => ({
     float: props?.float || "left",
-    clientRect: props?.clientRect.right + props?.clientRect.left + props?.clientRect.width
+    clientRect: props?.clientRect
 });
 
 /** @private */
 interface IStyledDropdownProps {
     float: DropdownFloat,
-    clientRect: number,
+    clientRect: DOMRect,
     isActive: boolean
 }
 
 /** @public */
 export const StyledDropdown = styled("div")<IStyledDropdownProps>`
   display: none;
-  position: relative;
-  top: ${props => props.theme.dropdown.config.top};
+  position: absolute;
+  top: calc(${props => props.clientRect.top}px + ${props => props.clientRect.height}px + ${props => props.theme.dropdown.config.top});
   width: ${props => props.theme.dropdown.config.width};
   min-width: ${props => props.theme.dropdown.config.minWidth};
   max-width: ${props => props.theme.dropdown.config.maxWidth};
@@ -35,7 +36,7 @@ export const StyledDropdown = styled("div")<IStyledDropdownProps>`
   z-index: ${props => props.theme.dropdown.config.zIndex};
   background: ${props => props.theme.dropdown.colors.background};
   
-  ${props => props.float === "left" ? css`left: 0;` : css`right: calc(${props.clientRect}px);`}
+  ${props => props.float === "left" ? css`left: ${props.clientRect.left}px;` : css`right: calc(100% - ${props.clientRect.right}px);`}
 
   ${props => props.isActive && css`
       display: block !important;

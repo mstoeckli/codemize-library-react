@@ -28,9 +28,11 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref): JSX.Ele
     /** @desc Perform side effects in function components -> Similar to componentDidMount and componentDidUpdate */
     useEffect((): void => {
         if (buttonRefObj) {
-            /** @desc Update client rect width for handling float RTL of dropdown
-             *  @ts-ignore */
-            setClientRect(buttonRefObj.current.getBoundingClientRect());
+            setTimeout(() => {
+                /** @desc Update client rect width for handling float RTL of dropdown
+                 *  @ts-ignore */
+                setClientRect(buttonRefObj.current.getBoundingClientRect());
+            }, 500);
         }
     }, [buttonRefObj]);
 

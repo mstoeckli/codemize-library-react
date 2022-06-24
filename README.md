@@ -1,7 +1,7 @@
-# Beta-Release v0.1.28!
+# Beta-Release v0.1.31!
 
 # Codemize Library React
-codemize-react-library is a fully customizable react library for creating your own saas in a shorter time period.
+codemize-react-library is a fully customizable react component library for creating your own saas in a shorter time period.
 The library at the moment is in a beta phase and possible changes are reserved. 
 
 # Compatibility
