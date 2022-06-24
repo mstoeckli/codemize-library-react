@@ -10,10 +10,6 @@ import { ThemeProvider } from '../theme';
 
 /** @public */
 const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref): JSX.Element => {
-    /** @desc Create a reference object to determine the width of button element
-     *  @type {HTMLButtonElement} */
-    const buttonRefObj = ref ? ref : useRef(null);
-
     /** @desc Returns a stateful value, and a function to update it. -> Handle dropdown visibility
      *  @type {[isActive:boolean, setIsActive:function]} */
     const [ isActive, setIsActive ] = useState(false);
@@ -25,14 +21,19 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref): JSX.Ele
         toJSON(): any {}
     });
 
+    /** @desc Create a reference object to determine the width of button element
+     *  @type {HTMLButtonElement} */
+    const buttonRefObj = ref ? ref : useRef(null);
+
     /** @desc Perform side effects in function components -> Similar to componentDidMount and componentDidUpdate */
     useEffect((): void => {
         if (buttonRefObj) {
+            /** @desc Possible use -> Loading the font can lead to possible inconsistencies in the width of a button */
             setTimeout(() => {
                 /** @desc Update client rect width for handling float RTL of dropdown
                  *  @ts-ignore */
                 setClientRect(buttonRefObj.current.getBoundingClientRect());
-            }, 500);
+            }, getDefaultValues(props).timeoutClientRect);
         }
     }, [buttonRefObj]);
 

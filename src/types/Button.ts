@@ -17,6 +17,7 @@ export interface IButtonProps {
     theme?: DefaultTheme,
     showBadge?: boolean,
     badgeValue?: number,
+    timeoutClientRect?: number,
     onClick: (oEvt: React.MouseEvent<HTMLButtonElement>) => void,
 }
 

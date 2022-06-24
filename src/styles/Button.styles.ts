@@ -9,6 +9,7 @@ export const getDefaultValues = (props: IButtonProps) => ({
     innerType: props?.type || "default",
     disabled: props?.disabled || false,
     hasText: !!props.text,
+    timeoutClientRect: props?.timeoutClientRect || 500,
     showBadge: props?.showBadge || false
 });
 

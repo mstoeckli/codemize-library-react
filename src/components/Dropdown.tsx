@@ -7,14 +7,14 @@ import { IDropdownProps } from '../types';
 
 /** @public */
 const Dropdown = (props: IDropdownProps): JSX.Element => {
+    /** @desc Returns a stateful value, and a function to update it. -> Handle dropdown activity
+     *  @type {[isActive:boolean, setIsActive:function]} */
+    const [ isActive, setIsActive ] = useState(false);
+
     /** @desc Create a reference object to the dropdown element for adding as dependencies to the hook "useEffect" inside
      *        custom hook "useClickOutside"
      *  @type {HTMLDivElement} */
     const dropdownRefObj = useRef(null);
-
-    /** @desc Returns a stateful value, and a function to update it. -> Handle dropdown activity
-     *  @type {[isActive:boolean, setIsActive:function]} */
-    const [ isActive, setIsActive ] = useState(false);
 
     /** @desc Perform side effects in function components -> Similar to componentDidMount and componentDidUpdate */
     useEffect((): void => setIsActive(props.isActive), [props.isActive]);
