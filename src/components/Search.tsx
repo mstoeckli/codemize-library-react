@@ -1,4 +1,5 @@
 import React, { useState, useEffect, forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { StyledSearch, getDefaultValues } from '../styles/Search.styles';
 
@@ -11,6 +12,10 @@ import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 
 /** @public */
 const Search = forwardRef<HTMLDivElement, ISearchProps>((props, ref): JSX.Element => {
+    /** @desc Returns the translation function for reading from the locales files
+     *  @type {function} t */
+    const { t } = useTranslation();
+
     /** @desc Returns a stateful value, and a function to update it. -> Handle search value
      *  @type {[value:string, setValue:function]} */
     const [ value, setValue ] = useState(props?.value);
@@ -62,7 +67,7 @@ const Search = forwardRef<HTMLDivElement, ISearchProps>((props, ref): JSX.Elemen
                     onClick={_onSearch}/>}
                 <input
                     type="text"
-                    placeholder={props?.placeholder || "Suchen"}
+                    placeholder={props?.placeholder || t("Search.placeholder")}
                     value={value}
                     className="search-input"
                     onChange={_onChange}/>

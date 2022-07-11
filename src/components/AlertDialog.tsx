@@ -1,4 +1,5 @@
 import React, { useState, forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { StyledAlertDialog, getDefaultValues } from '../styles/AlertDialog.styles';
 
@@ -8,13 +9,17 @@ import { Button } from './';
 
 import { ThemeProvider } from '../theme';
 
-import { getIconByType } from '../helpers/Icons';
+import { getIconByType } from '../helpers';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 
 /** @public */
 const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): JSX.Element => {
+    /** @desc Returns the translation function for reading from the locales files
+     *  @type {function} t */
+    const { t } = useTranslation();
+
     /** @desc Returns a stateful value, and a function to update it. -> Updates visibility of modal dialog by attribute "display"
      *  @type {[state:string, setState:function]} */
     const [ state, setState ] = useState("flex");
@@ -59,7 +64,7 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
     const _addSupportButton = (): JSX.Element => (
         <Button
             theme={props?.theme}
-            text={props?.dialog?.buttonSupport?.text || "Support"}
+            text={props?.dialog?.buttonSupport?.text || t('AlertDialog.ButtonSupport.text')}
             iconSrc={props?.dialog?.buttonSupport?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faHandsHelping"]} />}
             onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props?.dialog?.buttonSupport?.onClick ? props.dialog.buttonSupport.onClick : () => {})} />
     );
@@ -69,7 +74,7 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
         <Button
             theme={props?.theme}
             type="error"
-            text={props?.dialog?.buttonCancel?.text || "Abbrechen"}
+            text={props?.dialog?.buttonCancel?.text || t('AlertDialog.ButtonCancel.text')}
             iconSrc={props?.dialog?.buttonCancel?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faXmark"]} />}
             onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props?.dialog?.buttonCancel?.onClick ? props.dialog.buttonCancel.onClick : () => {})} />
     );
@@ -79,7 +84,7 @@ const AlertDialog = forwardRef<HTMLDivElement, IAlertDialogProps>((props, ref): 
         <Button
             theme={props?.theme}
             type="success"
-            text={props?.dialog?.buttonOK?.text || "OK"}
+            text={props?.dialog?.buttonOK?.text || t('AlertDialog.ButtonOK.text')}
             iconSrc={props?.dialog?.buttonOK?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faCheck"]} />}
             onClick={(oEvt: React.MouseEvent<HTMLButtonElement>) => _onClick(oEvt, props?.dialog?.buttonOK?.onClick ? props.dialog.buttonOK.onClick : () => {})} />
     );

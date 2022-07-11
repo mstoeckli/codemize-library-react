@@ -19,13 +19,19 @@ Dropdown.tsx <br />
 MadeIn.tsx <br />
 Toast.tsx <br />
 
+> V0.2.0
+
+DatePicker.tsx <br />
+ToggleSwitch.tsx <br />
+Checkbox.tsx
+
 # Fully available hooks 
 ClickOutside.tsx -> useClickOutside 
 
-# In Release v0.2.0
-DatePicker.tsx <br />
-ToggleSwitch.tsx <br />
-Checkbox.tsx 
+# In Release v0.3.0
+Sidebar.tsx <br />
+Header.tsx <br />
+Footer.tsx
 
 # Future planned components
 NavBar.tsx <br />
@@ -33,9 +39,6 @@ NavBarItem.tsx <br />
 Table.tsx <br />
 Calendar.tsx <br />
 Cards.tsx <br />
-Sidebar.tsx <br />
-Header.tsx <br />
-Footer.tsx <br />
 Features.tsx <br />
 NotFound.tsx
 
