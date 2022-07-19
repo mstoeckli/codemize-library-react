@@ -4,6 +4,9 @@ import { ButtonType } from "./Button";
 /** @public
  *  @desc Defines the properties of each datepicker element */
 export interface IDatePickerProps {
+    width?: string,
+    minWidth?: string,
+    maxWidth?: string,
     theme?: DefaultTheme,
     text?: string,
     month?: number,
@@ -17,13 +20,13 @@ export interface IDatePickerProps {
         text?: string,
         type?: ButtonType,
         iconSrc?: JSX.Element,
-        onClick: () => void
+        onClick: (dStartDate: Date|null, dEndDate: Date|null) => void
     }
     apply: {
         text?: string,
         type?: ButtonType,
         iconSrc?: JSX.Element,
-        onClick: () => void
+        onClick: (dStartDate: Date|null, dEndDate: Date|null) => void
     }
 }
 
@@ -40,9 +43,35 @@ export interface IDatePickerStateProps {
     datesBetween: Date[]
 }
 
+export type DatePickerColors = {
+    colorDay: string,
+    backgroundDay: string,
+    colorMonthYear: string,
+    backgroundMonthYear: string,
+}
+
 /** @public
  *  @desc Defines the theme properties for all the copyright config */
 export type DatePickerConfigTheme = {
-    fontSize: string, // -> 0.65rem
-    fontWeight: number // -> 500
+    header: {
+        height: string,
+        borderRadius: string
+    },
+    main: {
+        padding: string,
+        fontSizeDay: string,
+        fontWeightDay: number,
+        fontWeightDayHover: number,
+        paddingDay: string,
+        borderRadiusDay: string,
+        fontSizeWeek: string,
+        fontWeightWeek: number,
+        paddingWeek: string,
+        fontSizeMonthYear: string,
+        fontWeightMonthYear: number,
+        borderRadiusMonthYear: string,
+        fontWeightCurrent: number,
+        fontWeightActive: number
+    }
 }
+

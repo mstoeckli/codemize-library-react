@@ -19,6 +19,9 @@ export const getFirstDay = (iMonth: number = getCurrentMonth(), iYear: number = 
 export const getLastDay = (iMonth: number = getCurrentMonth(), iYear: number = getCurrentYear()): number => new Date(iYear, iMonth + 1, 0).getDay();
 
 /** @public */
+export const getMonths = (): number[] => ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+
+/** @public */
 export const getDayCountOfMonth = (iYear: number): number[] => ([31, getDaysLeapMonth(iYear), 31, 30, 31, 30, 31, 31, 30, 31, 30]);
 
 /** @public */
@@ -39,7 +42,7 @@ export const getDaysOfWeek = (bISO8601: boolean = true): Array<string> => bISO86
 /** @public */
 export const getMonthTranslationKey = (iMonth: number = getCurrentMonth()): string => (["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"])[iMonth];
 
-/** @private */
+/** @public */
 export const getDatesBetween = (dStartDate: Date, dEndDate: Date): Date[] => {
     /** @desc Checking the importing parameters for correct typing */
     if (dStartDate !instanceof Date && dEndDate !instanceof Date) {
@@ -127,6 +130,20 @@ export const getDaysOfMonth = (iYear: number = getCurrentYear(), iMonth: number 
     }
 
     return [...aPrevDays, ...aDays, ...aNextDays];
+};
+
+/** @public */
+export const getYears = (iYear: number = getCurrentYear()): number[] => {
+    const aYears: number[] = [];
+    /** @desc Adding previous years */
+    for (let i = 0; i <= 7; i++) {
+        aYears.unshift(iYear - i);
+    }
+
+    /** @desc Adding subsequent years */
+    for (let i = 1; i <= 4; i++) {
+        aYears.push(iYear + i);
+    } return aYears
 };
 
 /** @public */

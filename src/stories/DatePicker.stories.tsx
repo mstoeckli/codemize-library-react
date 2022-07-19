@@ -16,7 +16,9 @@ const Template: ComponentStory<typeof DatePicker> = (args) => <DatePicker {...ar
 export const Example1 = Template.bind({});
 Example1.args = {
     apply: {
-        onClick: () => {}
+        onClick: (dStartDate, dEndDate) => {
+            alert(`${dStartDate} - ${dEndDate}`);
+        }
     },
     reset: {
         onClick: () => {}

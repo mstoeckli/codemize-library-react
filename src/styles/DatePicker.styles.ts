@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components';
 
 /** @private */
-interface IStyledDatePickerProps {
-
-}
+interface IStyledDatePickerProps {}
 
 /** @public */
 export const StyledDatePicker = styled("div")<IStyledDatePickerProps>`
@@ -15,25 +13,25 @@ export const StyledDatePicker = styled("div")<IStyledDatePickerProps>`
       width: 275px;
 
       & button {
-        height: 24px;
+        height: ${props => props.theme.datePicker.config.header.height};
 
         & span.button-text {
-          line-height: 24px;
+          line-height: ${props => props.theme.datePicker.config.header.height};
         }
       }
 
       & svg {
-        color: #3b4148;
+        color: ${props => props.theme.datePicker.colors.header.iconDefault};
       }
       
       & .datepicker-calendar-nav {
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 6px;
-        background-color: #f9f9f9;
-        width: 24px;
-        height: 24px;
+        border-radius: ${props => props.theme.datePicker.config.header.borderRadius};
+        background: ${props => props.theme.datePicker.colors.header.backgroundColorHeaderNav};
+        width: ${props => props.theme.datePicker.config.header.height};
+        height: ${props => props.theme.datePicker.config.header.height};
         cursor: pointer;
       }
       
@@ -46,19 +44,19 @@ export const StyledDatePicker = styled("div")<IStyledDatePickerProps>`
     }
     
     & main {
-      padding: 0.5rem 0;
-
-      & span {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: #3b4148;
-      }
+      padding: ${props => props.theme.datePicker.config.main.padding};
       
       & .datepicker-calendar-week {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         place-items: center;
-        padding-bottom: 0.5rem;
+        padding: ${props => props.theme.datePicker.config.main.paddingWeek};
+        
+        & span {
+          font-size: ${props => props.theme.datePicker.config.main.fontSizeWeek};
+          font-weight: ${props => props.theme.datePicker.config.main.fontWeightWeek};
+          color: ${props => props.theme.datePicker.colors.main.colorWeek};
+        }
       }
 
       & .datepicker-calendar-days {
@@ -71,44 +69,92 @@ export const StyledDatePicker = styled("div")<IStyledDatePickerProps>`
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 6px;
-          font-weight: 500;
-          color: #3b4148;
-          padding: 5px;
+          border-radius: ${props => props.theme.datePicker.config.main.borderRadiusDay};
+          font-size: ${props => props.theme.datePicker.config.main.fontSizeDay};
+          font-weight: ${props => props.theme.datePicker.config.main.fontWeightDay};
+          background: ${props => props.theme.datePicker.colors.main.active.backgroundDay};
+          color: ${props => props.theme.datePicker.colors.main.active.colorDay};
+          padding: ${props => props.theme.datePicker.config.main.paddingDay};
           cursor: pointer;
           transition: background 0.3s ease, color 0.3s ease;
 
           &:hover {
-            font-weight: 600;
-            background: #e0f3ff;
-            color: #3f6ad8;
+            font-weight: ${props => props.theme.datePicker.config.main.fontWeightDayHover};
+            background: ${props => props.theme.datePicker.colors.main.hover.backgroundDay};
+            color: ${props => props.theme.datePicker.colors.main.hover.colorDay};
           }
         }
 
         & .datepicker-current,
         & .datepicker-active {
-          display: inline-grid !important;
-          background: #e0f3ff;
-          color: #3f6ad8;
-          font-weight: 600;
+          display: inline-grid;
+        }
+
+        & .datepicker-active {
+          background: ${props => props.theme.datePicker.colors.main.backgroundActive};
+          color: ${props => props.theme.datePicker.colors.main.colorActive};
+          font-weight: ${props => props.theme.datePicker.config.main.fontWeightActive};
         }
 
         & .datepicker-current {
-          background: #5379cd;
-          color: #fff;
+          background: ${props => props.theme.datePicker.colors.main.backgroundCurrent};
+          color: ${props => props.theme.datePicker.colors.main.colorCurrent};
+          font-weight: ${props => props.theme.datePicker.config.main.fontWeightCurrent};
         }
 
         & .datepicker-prevOrNext {
-          color: #e2e2e2;
+          color: ${props => props.theme.datePicker.colors.main.colorPrevOrNext};
         }
 
         & .datepicker-hover {
-          background: #f1f1f1;
+          background: ${props => props.theme.datePicker.colors.main.backgroundRangeSelectionHover};
         }
 
         & .datepicker-hover-prevOrNext {
-          background: #f8f8f8;
+          background: ${props => props.theme.datePicker.colors.main.backgroundRangeSelectionPrevOrNextHover};
         }
+      }
+      
+      & .datepicker-calendar-months,  
+      & .datepicker-calendar-years {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        background: ${props => props.theme.datePicker.colors.main.active.backgroundMonthYear};
+        padding: 8px;
+        gap: 8px;
+        z-index: 1;
+        transform: scale(1.5);
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.2s ease-in-out;
+
+        & > span {
+          display: grid;
+          place-items: center;
+          cursor: pointer;
+          color: ${props => props.theme.datePicker.colors.main.active.colorMonthYear};
+          font-size: ${props => props.theme.datePicker.config.main.fontSizeMonthYear};
+          font-weight: ${props => props.theme.datePicker.config.main.fontWeightMonthYear};
+          border-radius: ${props => props.theme.datePicker.config.main.borderRadiusMonthYear};
+          padding-left: 0;
+
+          &:hover {
+            background: ${props => props.theme.datePicker.colors.main.hover.backgroundMonthYear};
+            color: ${props => props.theme.datePicker.colors.main.hover.colorMonthYear};
+          }
+        }
+      }
+
+      & .datepicker-calendar-months.show,
+      & .datepicker-calendar-years.show {
+        transform: scale(1);
+        visibility: visible;
+        pointer-events: visible;
       }
     }
     

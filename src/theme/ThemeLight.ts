@@ -1,5 +1,4 @@
 import { DefaultTheme } from 'styled-components';
-import "typeface-montserrat";
 
 /** @public */
 const ThemeLight: DefaultTheme = {
@@ -345,6 +344,59 @@ const ThemeLight: DefaultTheme = {
                 padding: "4px",
                 cursor: "pointer",
                 opacity: 0.7
+            }
+        }
+    },
+    datePicker: {
+        colors: {
+            header: {
+                iconDefault: "#3b4148",
+                backgroundColorHeaderNav: "#f9f9f9",
+            },
+            main: {
+                colorWeek: "#3b4148",
+                colorActive: "#3f6ad8",
+                backgroundActive: "#e0f3ff",
+                colorCurrent: "#fff",
+                backgroundCurrent: "#5379cd",
+                colorPrevOrNext: "#e2e2e2",
+                backgroundRangeSelectionHover: "#f1f1f1",
+                backgroundRangeSelectionPrevOrNextHover: "#f8f8f8",
+                active: {
+                    colorDay: "#3b4148",
+                    backgroundDay: "transparent",
+                    colorMonthYear: "#3b4148",
+                    backgroundMonthYear: "#fff",
+
+                },
+                hover: {
+                    colorDay: "#3f6ad8",
+                    backgroundDay: "#e0f3ff",
+                    colorMonthYear: "#3f6ad8",
+                    backgroundMonthYear: "#e0f3ff"
+                }
+            }
+        },
+        config: {
+            header: {
+                height: "24px",
+                borderRadius: "6px"
+            },
+            main: {
+                padding: "0.5rem 0",
+                fontSizeDay: "0.75rem",
+                fontWeightDay: 500,
+                fontWeightDayHover: 600,
+                paddingDay: "5px",
+                borderRadiusDay: "6px",
+                fontSizeWeek: "0.75rem",
+                fontWeightWeek: 600,
+                paddingWeek: "0 0 0.25rem 0",
+                fontSizeMonthYear: "0.75rem",
+                fontWeightMonthYear: 600,
+                borderRadiusMonthYear: "6px",
+                fontWeightCurrent: 600,
+                fontWeightActive: 600
             }
         }
     }

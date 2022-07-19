@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState, useRef, forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { StyledDatePicker } from '../styles/DatePicker.styles';
@@ -7,7 +7,7 @@ import { IDatePickerProps, IDatePickerStateProps } from '../types';
 
 import { Button } from './';
 
-import { getStartEndOfWeek, getDaysOfWeek, getDaysOfMonth, getCurrentMonth, getCurrentYear, getMonthTranslationKey, getDatesBetween } from '../helpers';
+import { getStartEndOfWeek, getDaysOfWeek, getDaysOfMonth, getCurrentMonth, getCurrentYear, getMonthTranslationKey, getDatesBetween, getYears, getMonths } from '../helpers';
 
 import { ThemeProvider } from '../theme';
 
@@ -35,6 +35,25 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
     /** @desc Returns a stateful value, and a function to update it. -> Update datepicker state */
     const [ datePicker, setDatePicker ] = useState<IDatePickerStateProps>(oInitialState);
 
+    const monthsRefObj = useRef(null);
+    const yearsRefObj = useRef(null);
+
+    /** @private */
+    const _onClickApply = (): void => props.apply.onClick(datePicker.startDate, datePicker.endDate);
+
+    /** @private */
+    const _onClickReset = (): void => {
+        setDatePicker((oDatePicker) => ({
+            ...oDatePicker,
+            startDate: datePicker.initStartDate,
+            endDate: datePicker.initEndDate,
+            datesBetween: []
+        }));
+
+        /** @desc Call callback function for custom handling */
+        props.reset.onClick(datePicker.initStartDate, datePicker.initEndDate)
+    };
+
     /** @private */
     const _onClickPrev = (): void => {
         setDatePicker((oDatePickerProps) => ({
@@ -53,15 +72,13 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
         }));
     };
 
-    /** @private */
-    const _onClickYear = (): void => {
+    /** @private
+     *  @ts-ignore */
+    const _onClickYear = (): void => yearsRefObj.current.classList.add("show");
 
-    };
-
-    /** @private */
-    const _onClickMonth = (): void => {
-
-    };
+    /** @private
+     *  @ts-ignore */
+    const _onClickMonth = (): void => monthsRefObj.current.classList.add("show");
 
     /** @private */
     const _onClickToday = (): void => setDatePicker(() => (oInitialState));
@@ -103,6 +120,42 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
         /** @desc Determine first and last day of week for building button text */
         const { first, last } = getStartEndOfWeek();
         return `${first.toLocaleDateString()} - ${last.toLocaleDateString()}`;
+    };
+
+    /** @private */
+    const _addMonths = (): JSX.Element[] => {
+        const aMonths = [];
+        for (let iMonth of getMonths()) {
+            aMonths.push(<span
+                onClick={() => {
+                    /** @ts-ignore */
+                    monthsRefObj.current.classList.remove("show");
+                    setDatePicker((oDatePicker) => ({
+                        ...oDatePicker,
+                        month: iMonth,
+                    }));
+                }}>
+                {t(`Global.Months.${getMonthTranslationKey(iMonth)}`)}
+            </span>);
+        } return aMonths;
+    }
+
+    /** @private */
+    const _addYears = (): JSX.Element[] => {
+        const aYears = [];
+        for (let iYear of getYears(datePicker.year)) {
+            aYears.push(<span
+                onClick={() => {
+                    /** @ts-ignore */
+                    yearsRefObj.current.classList.remove("show");
+                    setDatePicker((oDatePicker) => ({
+                        ...oDatePicker,
+                        year: iYear,
+                    }));
+                }}>
+                {iYear}
+            </span>);
+        } return aYears;
     };
 
     /** @private */
@@ -152,6 +205,16 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
                     ))}
                 </div>
             </div>
+            <div
+                ref={monthsRefObj}
+                className="datepicker-calendar-months">
+                {_addMonths()}
+            </div>
+            <div
+                ref={yearsRefObj}
+                className="datepicker-calendar-years">
+                {_addYears()}
+            </div>
         </main>
     );
 
@@ -162,12 +225,12 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
                 text={props.reset?.text || t("DatePicker.Reset.text")}
                 type={props.reset?.type || "error"}
                 iconSrc={props.reset?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faCalendarXmark"]} /> }
-                onClick={props.reset.onClick} />
+                onClick={_onClickReset} />
             <Button
                 text={props.apply?.text || t("DatePicker.Apply.text")}
                 type={props.apply?.type || "create"}
                 iconSrc={props.apply?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faCalendarCheck"]} /> }
-                onClick={props.apply.onClick} />
+                onClick={_onClickApply} />
         </footer>
     );
 
@@ -176,10 +239,10 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
         <div className="datepicker-calendar-buttons">
             <Button
                 text={t(`Global.Months.${getMonthTranslationKey(datePicker.month)}`)}
-                onClick={_onClickYear} />
+                onClick={_onClickMonth} />
             <Button
                 text={datePicker.year.toString()}
-                onClick={_onClickMonth} />
+                onClick={_onClickYear} />
             <Button
                 text={t("DatePicker.CalendarButtons.today")}
                 onClick={_onClickToday} />
@@ -190,6 +253,9 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
         <ThemeProvider theme={props?.theme}>
             <StyledDatePicker ref={ref}>
                 <Button
+                    width={props?.width}
+                    minWidth={props?.minWidth}
+                    maxWidth={props?.maxWidth}
                     text={props?.text || _getText()}
                     iconSrc={<FontAwesomeIcon icon={FaSolidIcons["faCalendarDay"]} />}
                     dropdownContent={_addDropdownContent()}

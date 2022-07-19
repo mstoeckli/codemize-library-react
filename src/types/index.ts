@@ -9,6 +9,6 @@ export * from './NotFound';
 export * from './Toast';
 export * from './Loader';
 export * from './DatePicker';
-export * from './hooks'
-export * from './theme'
-export * from './helpers'
+export * from './hooks';
+export * from './theme';
+export * from './helpers';

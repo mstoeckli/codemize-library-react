@@ -17,16 +17,16 @@ Dropdown.tsx <br />
 MadeIn.tsx <br />
 Toast.tsx <br />
 
-> V0.2.0
+> New in V0.2.0:
  
 DatePicker.tsx <br />
-ToggleSwitch.tsx <br />
-Checkbox.tsx
 
 # Fully available hooks 
 ClickOutside.tsx -> useClickOutside 
 
 # In Release v0.3.0
+ToggleSwitch.tsx <br />
+Checkbox.tsx
 Sidebar.tsx <br />
 Header.tsx <br />
 Footer.tsx
