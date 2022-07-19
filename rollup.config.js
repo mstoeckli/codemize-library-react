@@ -33,10 +33,10 @@ export default [{
         typescript({
             tsconfig: "./tsconfig.json"
         }),
-        resolve(),
         postcss({
             plugins: []
         }),
+        resolve(),
         commonjs(),
         terser()
     ],

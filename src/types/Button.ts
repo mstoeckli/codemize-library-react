@@ -8,6 +8,8 @@ import { DropdownFloat } from "./Dropdown";
  *  @desc Defines the properties of each button */
 export interface IButtonProps {
     width?: string,
+    minWidth?: string,
+    maxWidth?: string,
     text?: string,
     iconSrc?: JSX.Element,
     type?: ButtonType,

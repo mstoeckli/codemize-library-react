@@ -5,6 +5,8 @@ import { ButtonType, IButtonProps } from '../types';
  *  @desc Initialize style properties and set their default values */
 export const getDefaultValues = (props: IButtonProps) => ({
     width: props?.width || "auto",
+    minWidth: props?.minWidth || "auto",
+    maxWidth: props?.maxWidth || "auto",
     dropdownFloat: props?.dropdownFloat || "left",
     innerType: props?.type || "default",
     disabled: props?.disabled || false,
@@ -16,6 +18,8 @@ export const getDefaultValues = (props: IButtonProps) => ({
 /** @private */
 interface IStyledButtonProps {
     width: string,
+    minWidth: string,
+    maxWidth: string,
     innerType: ButtonType,
     disabled: boolean,
     hasText: boolean,
@@ -28,6 +32,8 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   display: inline-flex;
   height: ${props => props.theme.button.config.height};
   width: ${props => props.width};
+  min-width: ${props => props.minWidth};
+  max-width: ${props => props.maxWidth};
   border: 1px solid ${props => props.theme.button.colors.active.border[props.innerType]};
   border-radius: ${props => props.theme.button.config.borderRadius};
   justify-content: ${props => props.theme.button.config.justifyContent};

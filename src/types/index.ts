@@ -8,5 +8,7 @@ export * from './Button';
 export * from './NotFound';
 export * from './Toast';
 export * from './Loader';
-export * from './hooks'
-export * from './theme'
+export * from './DatePicker';
+export * from './hooks';
+export * from './theme';
+export * from './helpers';

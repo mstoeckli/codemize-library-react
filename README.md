@@ -1,5 +1,3 @@
-# Beta-Release v0.1.31!
-
 # Codemize Library React
 codemize-react-library is a fully customizable react component library for creating your own saas in a shorter time period.
 The library at the moment is in a beta phase and possible changes are reserved. 
@@ -19,13 +17,19 @@ Dropdown.tsx <br />
 MadeIn.tsx <br />
 Toast.tsx <br />
 
+> New in V0.2.0:
+ 
+DatePicker.tsx <br />
+
 # Fully available hooks 
 ClickOutside.tsx -> useClickOutside 
 
-# In Release v0.2.0
-DatePicker.tsx <br />
+# In Release v0.3.0
 ToggleSwitch.tsx <br />
-Checkbox.tsx 
+Checkbox.tsx
+Sidebar.tsx <br />
+Header.tsx <br />
+Footer.tsx
 
 # Future planned components
 NavBar.tsx <br />
@@ -33,9 +37,6 @@ NavBarItem.tsx <br />
 Table.tsx <br />
 Calendar.tsx <br />
 Cards.tsx <br />
-Sidebar.tsx <br />
-Header.tsx <br />
-Footer.tsx <br />
 Features.tsx <br />
 NotFound.tsx
 

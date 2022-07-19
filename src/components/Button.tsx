@@ -21,9 +21,8 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref): JSX.Ele
         toJSON(): any {}
     });
 
-    /** @desc Create a reference object to determine the width of button element
-     *  @type {HTMLButtonElement} */
-    const buttonRefObj = ref ? ref : useRef(null);
+    /** @desc Create a reference object to determine the width of button element */
+    const buttonRefObj = ref ? ref : useRef<HTMLButtonElement>(null);
 
     /** @desc Perform side effects in function components -> Similar to componentDidMount and componentDidUpdate */
     useEffect((): void => {

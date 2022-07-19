@@ -8,7 +8,8 @@ import {
     MadeInConfigTheme,
     InputColors, InputConfigTheme,
     AlertDialogConfigTheme,
-    ToastConfigTheme
+    ToastConfigTheme,
+    DatePickerConfigTheme, DatePickerColors
 } from './types';
 
  /** @desc DefaultTheme is being used as an interface of props.theme out of the box.
@@ -127,6 +128,28 @@ declare module 'styled-components' {
                 }
             },
             config: ToastConfigTheme
+        },
+        datePicker: {
+            colors: {
+                header: {
+                    iconDefault: string,
+                    backgroundColorHeaderNav: string
+                }
+                main: {
+                    colorWeek: string,
+                    colorActive: string,
+                    backgroundActive: string,
+                    colorCurrent: string,
+                    backgroundCurrent: string,
+                    colorPrevOrNext: string,
+                    backgroundRangeSelectionHover: string,
+                    backgroundRangeSelectionPrevOrNextHover: string,
+                    active: DatePickerColors,
+                    hover: DatePickerColors
+                }
+            },
+            config: DatePickerConfigTheme
         }
     }
 }
+

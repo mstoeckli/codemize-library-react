@@ -6,7 +6,7 @@ import { IToastProps } from '../types';
 
 import { ThemeProvider } from '../theme';
 
-import { getIconByType } from '../helpers/Icons';
+import { getIconByType } from '../helpers';
 
 import { Button } from "./index";
 
