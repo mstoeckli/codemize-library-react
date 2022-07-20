@@ -13,8 +13,9 @@ export interface IDatePickerProps {
     year?: number,
     startDate?: Date|null,
     endDate?: Date|null,
-    iconSrcLeft?: JSX.Element,
-    iconSrcRight?: JSX.Element,
+    iconSrc?: JSX.Element,
+    iconSrcNavLeft?: JSX.Element,
+    iconSrcNavRight?: JSX.Element,
     iso8601?: boolean,
     reset: {
         text?: string,

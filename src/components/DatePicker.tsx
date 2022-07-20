@@ -1,5 +1,6 @@
 import React, { useState, useRef, forwardRef } from 'react';
-import { useTranslation } from 'react-i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
+import i18n from './i18n';
 
 import { StyledDatePicker } from '../styles/DatePicker.styles';
 
@@ -29,7 +30,7 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
         initStartDate: props?.startDate || null,
         initEndDate: props?.endDate || null,
         iso8601: props?.iso8601 || true,
-        datesBetween: props?.startDate && props?.endDate ? getDatesBetween(props.startDate, props.endDate) : []
+        datesBetween: props?.startDate && props?.endDate ? getDatesBetween(props.startDate, props.endDate) : [],
     }
 
     /** @desc Returns a stateful value, and a function to update it. -> Update datepicker state */
@@ -117,9 +118,16 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
 
     /** @private */
     const _getText = (): string => {
-        /** @desc Determine first and last day of week for building button text */
-        const { first, last } = getStartEndOfWeek();
-        return `${first.toLocaleDateString()} - ${last.toLocaleDateString()}`;
+        if (datePicker.startDate !== null && datePicker.endDate === null) return `${datePicker.startDate.toLocaleDateString()}`
+        else if (datePicker.startDate !== null && datePicker.endDate !== null ) return `${datePicker.startDate.toLocaleDateString()} - ${datePicker.endDate.toLocaleDateString()}`;
+        else {
+            /** @desc Determine first and last day of week for building button text */
+            let { first, last } = getStartEndOfWeek();
+            if (datePicker.iso8601) {
+                first.setDate(first.getDate() + 1);
+                last.setDate(last.getDate() + 1);
+            } return `${first.toLocaleDateString()} - ${last.toLocaleDateString()}`;
+        }
     };
 
     /** @private */
@@ -173,13 +181,13 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
             <div
                 className="datepicker-calendar-nav"
                 onClick={_onClickPrev}>
-                {props?.iconSrcLeft ? props.iconSrcLeft : <FontAwesomeIcon icon={FaSolidIcons["faAngleLeft"]}/>}
+                {props?.iconSrcNavLeft || <FontAwesomeIcon icon={FaSolidIcons["faAngleLeft"]}/>}
             </div>
             {_addHeaderButtons()}
             <div
                 className="datepicker-calendar-nav"
                 onClick={_onClickNext}>
-                {props?.iconSrcRight ? props.iconSrcRight : <FontAwesomeIcon icon={FaSolidIcons["faAngleRight"]} />}
+                {props?.iconSrcNavRight || <FontAwesomeIcon icon={FaSolidIcons["faAngleRight"]} />}
             </div>
         </header>
     );
@@ -189,7 +197,7 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
         <main>
             <div>
                 <div className="datepicker-calendar-week">
-                    {getDaysOfWeek().map((sWeekDay) => (
+                    {getDaysOfWeek(datePicker.iso8601).map((sWeekDay) => (
                         <span>{t(sWeekDay)}</span>
                     ))}
                 </div>
@@ -251,16 +259,18 @@ const DatePicker = forwardRef<HTMLDivElement, IDatePickerProps>((props, ref): JS
 
     return (
         <ThemeProvider theme={props?.theme}>
-            <StyledDatePicker ref={ref}>
-                <Button
-                    width={props?.width}
-                    minWidth={props?.minWidth}
-                    maxWidth={props?.maxWidth}
-                    text={props?.text || _getText()}
-                    iconSrc={<FontAwesomeIcon icon={FaSolidIcons["faCalendarDay"]} />}
-                    dropdownContent={_addDropdownContent()}
-                    onClick={() => {}} />
-            </StyledDatePicker>
+            <I18nextProvider i18n={i18n}>
+                <StyledDatePicker ref={ref}>
+                    <Button
+                        width={props?.width}
+                        minWidth={props?.minWidth}
+                        maxWidth={props?.maxWidth}
+                        text={props?.text || _getText()}
+                        iconSrc={props?.iconSrc || <FontAwesomeIcon icon={FaSolidIcons["faCalendarDay"]} />}
+                        dropdownContent={_addDropdownContent()}
+                        onClick={() => {}} />
+                </StyledDatePicker>
+            </I18nextProvider>
         </ThemeProvider>
     )
 });
