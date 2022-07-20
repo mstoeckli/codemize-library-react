@@ -1,5 +1,6 @@
 import React, { useState, useEffect, forwardRef } from 'react';
-// import { useTranslation } from 'react-i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
+import i18n from './i18n';
 
 import { StyledSearch, getDefaultValues } from '../styles/Search.styles';
 
@@ -14,7 +15,7 @@ import * as FaSolidIcons from '@fortawesome/free-solid-svg-icons';
 const Search = forwardRef<HTMLDivElement, ISearchProps>((props, ref): JSX.Element => {
     /** @desc Returns the translation function for reading from the locales files
      *  @type {function} t */
-    // const { t } = useTranslation();
+    const { t } = useTranslation();
 
     /** @desc Returns a stateful value, and a function to update it. -> Handle search value
      *  @type {[value:string, setValue:function]} */
@@ -58,24 +59,26 @@ const Search = forwardRef<HTMLDivElement, ISearchProps>((props, ref): JSX.Elemen
 
     return (
         <ThemeProvider theme={props?.theme}>
-            <StyledSearch
-                ref={ref}
-                {...getDefaultValues(props)}>
-                {props?.iconSrcLeft || <FontAwesomeIcon
-                    icon={FaSolidIcons["faSearch"]}
-                    className="search-svg-left"
-                    onClick={_onSearch}/>}
-                <input
-                    type="text"
-                    placeholder={props?.placeholder || "test"}
-                    value={value}
-                    className="search-input"
-                    onChange={_onChange}/>
-                {props?.iconSrcRight || <FontAwesomeIcon
-                    icon={FaSolidIcons["faXmark"]}
-                    className="search-svg-right"
-                    onClick={_onClear}/>}
-            </StyledSearch>
+            <I18nextProvider i18n={i18n}>
+                <StyledSearch
+                    ref={ref}
+                    {...getDefaultValues(props)}>
+                    {props?.iconSrcLeft || <FontAwesomeIcon
+                        icon={FaSolidIcons["faSearch"]}
+                        className="search-svg-left"
+                        onClick={_onSearch}/>}
+                    <input
+                        type="text"
+                        placeholder={props?.placeholder || t('Search.placeholder')}
+                        value={value}
+                        className="search-input"
+                        onChange={_onChange}/>
+                    {props?.iconSrcRight || <FontAwesomeIcon
+                        icon={FaSolidIcons["faXmark"]}
+                        className="search-svg-right"
+                        onClick={_onClear}/>}
+                </StyledSearch>
+            </I18nextProvider>
         </ThemeProvider>
     )
 });
