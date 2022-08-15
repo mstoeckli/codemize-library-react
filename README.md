@@ -21,8 +21,16 @@ Toast.tsx <br />
  
 DatePicker.tsx <br />
 
+> New in V0.3.0:
+
+
+
 # Fully available hooks 
 ClickOutside.tsx -> useClickOutside 
+
+> New in V0.2.0:
+
+ResizeHandler.tsx -> useResizeHandler
 
 # In Release v0.3.0
 ToggleSwitch.tsx <br />

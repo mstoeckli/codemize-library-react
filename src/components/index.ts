@@ -6,6 +6,8 @@ export { default as Input } from './Input';
 export { default as Toast } from './Toast';
 export { default as Button } from './Button';
 export { default as NotFound } from './NotFound';
+export { default as NavBar } from './NavBar';
+export { default as NavItem } from './NavItem';
 export { default as AlertDialog } from './AlertDialog';
 export { default as DatePicker } from './DatePicker';
 export { default as Search } from './Search';

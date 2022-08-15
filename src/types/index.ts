@@ -9,6 +9,8 @@ export * from './NotFound';
 export * from './Toast';
 export * from './Loader';
 export * from './DatePicker';
+export * from './NavBar';
+export * from './NavItem';
 export * from './hooks';
 export * from './theme';
 export * from './helpers';

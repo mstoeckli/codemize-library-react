@@ -12,7 +12,7 @@ export const getDefaultValues = (props: IButtonProps) => ({
     disabled: props?.disabled || false,
     hasText: !!props.text,
     timeoutClientRect: props?.timeoutClientRect || 500,
-    showBadge: props?.showBadge || false
+    showBadge: props?.showBadge || false,
 });
 
 /** @private */
@@ -43,7 +43,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   background: ${props => props.theme.button.colors.active.background[props.innerType]};
   outline: none;
   transition: ${props => props.theme.button.config.transition};
-
+  
   & > svg {
     font-size: ${props => props.theme.button.config.fontSizeSVG};
     color: ${props => props.theme.button.colors.active.icon[props.innerType]};
